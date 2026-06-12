@@ -1,0 +1,35 @@
+@import 'variables.css';
+
+html, body {
+    font-family: var(--body-font);
+    color: var(--body-font-color);
+    background-color: var(--background-color);
+    margin: 0;
+    padding: 20px;
+}
+body {
+    h1 {
+        font-family: var(--header-font);
+        color: var(--primary-color);
+    }
+    nav {
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            display: inline;
+            margin-right: 15px;
+        }
+
+        a {
+            color: var(--body-font-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+        a:hover {
+            color: var(--secondary-color);
+        }
+    }
+}

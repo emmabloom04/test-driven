@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+:root {
+    --header-font: "Black Ops One", system-ui;
+    --body-font: "Raleway", sans-serif;
+
+    --body-font-color: #FFFFFF;
+    --background-color: #403939;
+    --darker-background-color: #1A1616;
+    --primary-color: #D91A3A;
+    --accent-color: #801426;
+    --secondary-color: #FCDF4C;
+}
