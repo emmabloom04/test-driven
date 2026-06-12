@@ -1,7 +1,7 @@
 // route handlers for static pages
 
 const homePage = (req, res) => {
-    res.render('home', { title: 'Home' });
+    res.render('home', { title: 'Test Driven' });
 };
 
 const testErrorPage = (req, res, next) => {
