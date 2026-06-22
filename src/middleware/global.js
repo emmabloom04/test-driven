@@ -4,11 +4,9 @@
  * 
  * Adds these methods to the response object:
  * - res.addStyle(css, priority) - Add CSS/link tags to head
- * - res.addScript(js, priority) - Add script tags 
  * 
  * Adds these functions to EJS templates via res.locals:
  * - renderStyles() - Outputs all CSS in priority order (high to low)
- * - renderScripts() - Outputs all JS in priority order (high to low)
  */
 const setHeadAssetsFunctionality = (res) => {
     res.locals.styles = [];
