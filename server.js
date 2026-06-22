@@ -3,6 +3,7 @@ import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { addLocalVariables } from './src/middleware/global.js';
+import { setupDatabase, testConnection } from './src/models/setup.js';
 
 // Import MVC components
 import routes from './src/controllers/routes.js';
@@ -30,6 +31,10 @@ app.set('views', path.join(__dirname, 'src/views'));
  * Global Middleware
  */
 app.use(addLocalVariables);
+
+// Allow Express to receive and process POST data
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 /**
  * Routes
@@ -99,7 +104,19 @@ if (NODE_ENV.includes('dev')) {
     }
 }
 
-// Start the server and listen on the specified port
-app.listen(PORT, () => {
-    console.log(`Server is running on http://127.0.0.1:${PORT}`);
-});
+// Start the server only after the database is ready.
+const startServer = async () => {
+    try {
+        await setupDatabase();
+        await testConnection();
+
+        app.listen(PORT, () => {
+            console.log(`Server is running on http://127.0.0.1:${PORT}`);
+        });
+    } catch (error) {
+        console.error('Failed to initialize the database:', error);
+        process.exit(1);
+    }
+};
+
+startServer();

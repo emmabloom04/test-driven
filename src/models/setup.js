@@ -7,35 +7,13 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 /**
- * Sets up the database by running the seed.sql file if needed.
+ * Sets up the database schema by running the SQL file on startup.
  */
 const setupDatabase = async () => {
-
-    let hasData = false;
-    try {
-        const result = await db.query(
-            "SELECT EXISTS (SELECT 1 FROM contact_form LIMIT 1) as has_data"
-        );
-        hasData = result.rows[0]?.has_data || false;
-    } catch (error) {
-        /**
-         * If query fails (e.g., table doesn't exist), treat the same as no data.
-         * This allows the seed process to proceed.
-         */
-        hasData = false;
-    }
-    
-    if (hasData) {
-        console.log('Database already seeded');
-        return true;
-    }
-    
-    // No faculty found - run full seed
-    console.log('Seeding database...');
     const seedPath = join(__dirname, 'sql', 'seed.sql');
     const seedSQL = fs.readFileSync(seedPath, 'utf8');
     await db.query(seedSQL);
-    console.log('Database seeded successfully');
+    console.log('Database schema ready');
     
     return true;
 };
