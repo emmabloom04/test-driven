@@ -1,5 +1,7 @@
 import { Router } from 'express';
 import { contactValidation } from '../../middleware/validation/forms';
+import { validationResult } from 'express-validator';
+import { getAllContactForms, createContactForm } from '../../models/forms/contact';
 
 const router = Router();
 
@@ -7,7 +9,7 @@ const router = Router();
  * Display the contact form page.
  */
 const showContactForm = (req, res) => {
-    res.render('forms/contact', {
+    res.render('forms/contact/form', {
         title: 'Contact Us'
     });
 };
@@ -77,6 +79,6 @@ router.post('/', contactValidation, handleContactSubmission);
 /**
  * GET /contact/responses - Display all contact form submissions
  */
-router.get('/responses', requireLogin, showContactResponses);
+router.get('/responses', showContactResponses);
 
 export default router;
