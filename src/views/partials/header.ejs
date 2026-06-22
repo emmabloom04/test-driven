@@ -5,8 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= title %></title>
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/contact.css">
+    <%- renderStyles() %>
     <% if (NODE_ENV.includes('dev')) { %>
         <script>
             // Get the current hostname and port from the browser
@@ -31,6 +30,22 @@
                 <!-- Always visible links -->
                 <li><a href="/">Home</a></li>
                 <li><a href="/contact">Contact</a></li>
+                <li><a href="/contact/responses">Contact Responses</a></li>
             </ul>
         </nav>
     </header>
+    <%
+        const messages = flash();
+        const hasMessages = Object.values(messages).some(arr => arr.length > 0);
+    %>
+    <% if (hasMessages) { %>
+        <div class="flash-messages">
+            <% Object.keys(messages).forEach(type => { %>
+                <% messages[type].forEach(message => { %>
+                    <div class="flash <%= type %>">
+                        <%= message %>
+                    </div>
+                <% }); %>
+            <% }); %>
+        </div>
+    <% } %>
