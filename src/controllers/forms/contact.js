@@ -1,7 +1,7 @@
 import { Router } from 'express';
-import { contactValidation } from '../../middleware/validation/forms';
+import { contactValidation } from '../../middleware/validation/forms.js';
 import { validationResult } from 'express-validator';
-import { getAllContactForms, createContactForm } from '../../models/forms/contact';
+import { getAllContactForms, createContactForm } from '../../models/forms/contact.js';
 
 const router = Router();
 
@@ -39,7 +39,7 @@ const handleContactSubmission = async (req, res) => {
         await createContactForm(subject, message);
         req.flash('success', 'Thank you for contacting us! We will respond soon.');
         // Redirect to responses page on success
-        res.redirect('/contact');
+        res.redirect('/contact/responses');
     } catch (error) {
         console.error('Error saving contact form:', error);
         req.flash('error', 'Unable to submit your message. Please try again later.');
