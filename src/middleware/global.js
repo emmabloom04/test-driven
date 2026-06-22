@@ -33,6 +33,9 @@ const addLocalVariables = (req, res, next) => {
 
     res.locals.queryParams = { ...req.query };
 
+    setHeadAssetsFunctionality(res)
+    res.addStyle('<link rel="stylesheet" href="/css/main.css">', 1);
+
     next();
 
 }
