@@ -1,5 +1,6 @@
 import { homePage, testErrorPage } from './index.js';
 import contactRoutes from './forms/contact.js';
+import registrationRoutes from './forms/registration.js';
 import loginRoutes from './forms/login.js';
 import { processLogout } from './forms/login.js';
 import { requireLogin } from '../middleware/auth.js';
