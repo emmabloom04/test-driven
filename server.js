@@ -1,6 +1,7 @@
 // Import express using ESM syntax
 import express from 'express';
 import path from 'path';
+
 import { fileURLToPath } from 'url';
 import { addLocalVariables } from './src/middleware/global.js';
 import { setupDatabase, testConnection } from './src/models/setup.js';
@@ -12,6 +13,14 @@ import flash from './src/middleware/flash.js';
 
 // Import MVC components
 import routes from './src/controllers/routes.js';
+
+/**
+ * Server configuration
+ */
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const NODE_ENV = process.env.NODE_ENV?.toLowerCase() || 'production';
+const PORT = process.env.PORT || 3000;
 
 // Create an instance of an Express application
 const app = express();
@@ -47,13 +56,6 @@ app.use(session({
 // Start automatic session cleanup
 startSessionCleanup();
 
-/**
- * Server configuration
- */
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const NODE_ENV = process.env.NODE_ENV?.toLowerCase() || 'production';
-const PORT = process.env.PORT || 3000;
 
 /**
  * Configure Express
