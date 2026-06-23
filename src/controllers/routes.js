@@ -10,6 +10,12 @@ router.use('/contact', (req, res, next) => {
     next();
 });
 
+// Add login-specific styles to all login routes
+router.use('/login', (req, res, next) => {
+    res.addStyle('<link rel="stylesheet" href="/css/login.css">');
+    next();
+});
+
 router.get('/', homePage);
 
 // Contact form routes
