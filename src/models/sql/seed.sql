@@ -1,6 +1,25 @@
+CREATE TABLE IF NOT EXISTS base_table (
+    id SERIAL PRIMARY KEY,
+    value TEXT
+);
+
+INSERT INTO base_table (value) VALUES
+    ('value1'),
+    ('value2'),
+    ('value3');
+
 CREATE TABLE IF NOT EXISTS contact_form (
     id SERIAL PRIMARY KEY,
     subject VARCHAR(255) NOT NULL,
     message TEXT NOT NULL,
     submitted TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS users (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );

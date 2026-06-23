@@ -14,10 +14,8 @@ const findUserByEmail = async (email) => {
             users.name, 
             users.email, 
             users.password, 
-            users.created_at,
-            roles.role_name AS "roleName"
+            users.created_at
         FROM users
-        INNER JOIN roles ON users.role_id = roles.id
         WHERE LOWER(users.email) = LOWER($1)
         LIMIT 1
     `;
