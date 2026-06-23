@@ -1,6 +1,9 @@
-import { Router } from 'express';
 import { homePage, testErrorPage } from './index.js';
 import contactRoutes from './forms/contact.js';
+import loginRoutes from './forms/login.js';
+import { processLogout, showDashboard } from './forms/login.js';
+import { requireLogin } from '../middleware/auth.js';
+import { Router } from 'express';
 
 const router = Router();
 
@@ -23,5 +26,11 @@ router.use('/contact', contactRoutes);
 
 // Route to trigger a test error
 router.get('/test-error', testErrorPage);
+
+// Login routes (form and submission)
+router.use('/login', loginRoutes);
+
+// Authentication-related routes at root level
+router.get('/logout', processLogout);
 
 export default router;
