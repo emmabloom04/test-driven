@@ -67,6 +67,7 @@ const processLogin = async (req, res) => {
  * specify a custom name when creating the session in server.js.
  */
 const processLogout = (req, res) => {
+
     // First, check if there is a session object on the request
     if (!req.session) {
         // If no session exists, there's nothing to destroy,
