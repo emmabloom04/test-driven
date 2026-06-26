@@ -85,8 +85,8 @@
     gap: 1.5rem;
 
     .user-card {
-        background-color: #fff;
-        border: 1px solid #ddd;
+        background-color: var(--darker-background-color);
+        border: 1px solid var(--background-color);
         border-radius: 8px;
         padding: 1.5rem;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -96,48 +96,18 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
         }
 
-        .user-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-            padding-bottom: 1rem;
-            border-bottom: 2px solid #2c5aa0;
-
-            h3 {
-                margin: 0;
-                color: #2c5aa0;
-                font-size: 1.25rem;
-            }
-
-            .user-id {
-                background-color: #e9ecef;
-                padding: 0.25rem 0.75rem;
-                border-radius: 12px;
-                font-size: 0.875rem;
-                color: #666;
-                font-weight: 500;
-            }
+        h3 {
+            color: var(--secondary-color);
         }
-
-        .user-details {
-            .detail-item {
-                margin-bottom: 0.75rem;
-
-                &:last-child {
-                    margin-bottom: 0;
-                }
-
-                .label {
-                    font-weight: 500;
-                    color: #666;
-                    font-size: 0.875rem;
-                    margin-bottom: 0.25rem;
-                }
-
-                .value {
-                    color: #333;
-                    font-size: 1rem;
+        p {
+            color: var(--body-font-color);
+        }
+        .user-actions {
+            a {
+                color: var(--primary-color);
+                text-decoration: none;
+                &:hover {
+                    text-decoration: underline;
                 }
             }
         }
