@@ -1,0 +1,30 @@
+<%- include('../../partials/header') %>
+<main>
+    <h1><%= title %></h1>
+
+    <% if (users && users.length > 0) { %>
+
+        <div class="users-list">
+            <!-- For each user in the loop, create this structure: -->
+            <% users.forEach(listUser => { %>
+                <% 
+                const currentUser = typeof isLoggedIn !== 'undefined' && isLoggedIn ? user : null;
+                const canEdit = currentUser && currentUser.id === listUser.id;
+                %>
+            <div class="user-card">
+                <h3><%= listUser.name %></h3>
+                <p><%= listUser.email %></p>
+                <% if (canEdit) { %>
+                    <div class="user-actions">
+                        <a href="/register/<%= listUser.id %>/edit">Edit</a>
+                    </div>
+                <% } %>
+            </div>
+            <% }); %>
+        </div>
+        <% } else { %>
+            <p class="no-users">No users registered yet.</p>
+        <% } %>
+
+</main>
+<%- include('../../partials/footer') %>
