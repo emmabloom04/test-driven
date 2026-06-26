@@ -1,6 +1,15 @@
 /* Login Form Styles */
 
 @import 'variables.css';
+.login-header {
+    a {
+        color: var(--secondary-color);
+        text-decoration: none;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
 .login-form {
     max-width: 500px;
     margin: 2rem auto;
