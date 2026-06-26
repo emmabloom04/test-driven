@@ -44,6 +44,9 @@ router.use('/register', registrationRoutes);
 // Login routes (form and submission)
 router.use('/login', loginRoutes);
 
+// Car routes
+router.use('/cars', carsRoutes)
+
 // Authentication-related routes at root level
 router.get('/logout', processLogout);
 
