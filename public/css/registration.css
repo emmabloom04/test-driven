@@ -79,7 +79,6 @@
 /* Users List Styles */
 .users-list {
     max-width: 900px;
-    margin: 2rem auto;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     gap: 1.5rem;
