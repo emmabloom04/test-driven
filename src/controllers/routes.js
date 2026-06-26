@@ -2,6 +2,7 @@ import { homePage, testErrorPage } from './index.js';
 import contactRoutes from './forms/contact.js';
 import registrationRoutes from './forms/registration.js';
 import loginRoutes from './forms/login.js';
+import carsRoutes from './forms/cars.js';
 import { processLogout } from './forms/login.js';
 import { requireLogin } from '../middleware/auth.js';
 import { Router } from 'express';
@@ -25,6 +26,12 @@ router.use('/login', (req, res, next) => {
     res.addStyle('<link rel="stylesheet" href="/css/login.css">');
     next();
 });
+
+// Add car-specific styles to all car routes
+router.use('/cars', (req, res, next) => {
+    res.addStyle('<link rel="stylesheet" href="/css/cars.css">')
+    next();
+})
 
 router.get('/', homePage);
 
