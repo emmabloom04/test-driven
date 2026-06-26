@@ -1,4 +1,4 @@
-import { homePage, testErrorPage } from './index.js';
+import { homePage, aboutPage, testErrorPage } from './index.js';
 import contactRoutes from './forms/contact.js';
 import registrationRoutes from './forms/registration.js';
 import loginRoutes from './forms/login.js';
@@ -34,6 +34,8 @@ router.use('/cars', (req, res, next) => {
 })
 
 router.get('/', homePage);
+
+router.get('/about', aboutPage);
 
 // Contact form routes
 router.use('/contact', contactRoutes);
