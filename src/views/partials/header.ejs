@@ -30,8 +30,11 @@
                 <!-- Always visible links -->
                 <li><a href="/">Home</a></li>
                 <li><a href="/contact">Contact</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/cars/list">Purchase A Car</a></li>
                 <!-- Only visible when logged in -->
                 <% if (isLoggedIn) { %>
+                    <li><a href="/cars">Sell A Car</a></li>
                     <li><a href="/contact/responses">Contact Responses</a></li>
                     <li><a href="/register/list">All Users</a></li>
                     <li><a href="/logout">Logout</a></li>
