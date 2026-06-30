@@ -5,7 +5,7 @@ const homePage = (req, res) => {
 };
 
 const aboutPage = (req, res) => {
-    res.render('about', { title: 'About Test Driven' })
+    res.render('about', { title: 'About Us' })
 }
 
 const testErrorPage = (req, res, next) => {
