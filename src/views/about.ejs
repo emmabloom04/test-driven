@@ -1,6 +1,21 @@
 <%- include('partials/header') %>
 <main>
-    <h1><%= title %></h1>
-    Welcome to the about page
+  <div class="about-hero">
+    <img
+      class="about-header"
+      src="images/about-header.jpg"
+      alt="img of a black porsche driving down the road"
+    />
+    <div class="about-overlay">
+      <h1><%= title %></h1>
+      <p>
+        Thank you for choosing Test Driven! Our goal is to get you into your
+        next car. With our catalog of verified used cars, you are guaranteed a
+        good experience driving one of our cars. Feel comforted knowing that
+        others have "test driven" these cars, and that you can "test drive" them
+        too!
+      </p>
+    </div>
+  </div>
 </main>
 <%- include('partials/footer') %>
