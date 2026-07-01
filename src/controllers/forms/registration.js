@@ -210,6 +210,47 @@ const processEditAccount = async (req, res) => {
 };
 
 /**
+ * Process account deletion
+ * Only admins can delete accounts, and they cannot delete themselves
+ */
+const processDeleteAccount = async (req, res) => {
+  const targetUserId = parseInt(req.params.id, 10);
+  const currentUser = req.session?.user;
+
+  if (!currentUser) {
+    req.flash("error", "You must be logged in to delete this account.");
+    return res.redirect("/login");
+  }
+
+  if (currentUser.id !== targetUserId) {
+    req.flash("error", "You do not have permission to delete this account.");
+    return res.redirect("/register/list");
+  }
+
+  try {
+    const deleted = await deleteUser(targetUserId);
+
+    if (!deleted) {
+      req.flash("error", "User not found or already deleted.");
+      return res.redirect("/register/list");
+    }
+
+    req.session.destroy((err) => {
+      if (err) {
+        console.error("Error destroying session after account deletion:", err);
+      }
+
+      res.clearCookie("connect.sid");
+      return res.redirect("/login");
+    });
+  } catch (error) {
+    console.error("Error deleting user:", error);
+    req.flash("error", "An error occurred while deleting the account.");
+    return res.redirect("/register/list");
+  }
+};
+
+/**
  * GET /register - Display the registration form
  */
 router.get("/", showRegistrationForm);
@@ -237,6 +278,6 @@ router.post("/:id/edit", requireLogin, editValidation, processEditAccount);
 /**
  * POST /register/:id/delete - Delete user account
  */
-router.post("/:id/delete", requireLogin);
+router.post("/:id/delete", requireLogin, processDeleteAccount);
 
 export default router;
