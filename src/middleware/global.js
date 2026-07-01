@@ -28,6 +28,7 @@ const setHeadAssetsFunctionality = (res) => {
 const addLocalVariables = (req, res, next) => {
     // Convenience variable for UI state based on session state
     res.locals.currentUser = req.session?.user || null;
+    res.locals.user = res.locals.currentUser;
     res.locals.isLoggedIn = Boolean(res.locals.currentUser);
     res.locals.isAdmin = Boolean(
         res.locals.currentUser && res.locals.currentUser.roleName?.toLowerCase() === 'admin'
