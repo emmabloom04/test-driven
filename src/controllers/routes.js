@@ -48,16 +48,6 @@ router.use('/register', registrationRoutes);
 // Login routes (form and submission)
 router.use('/login', loginRoutes);
 
-router.use('/admin', requireRole('admin'));
-
-router.get('/admin/contact/responses', (req, res) => {
-  res.render('admin/contact/responses');
-});
-
-router.get('/admin/register/list', (req, res) => {
-  res.render('admin/register/list');
-});
-
 // Car routes
 router.use('/cars', carsRoutes)
 

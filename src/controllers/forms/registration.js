@@ -9,7 +9,7 @@ import {
   updateUser,
   deleteUser,
 } from "../../models/forms/registration.js";
-import { requireLogin } from "../../middleware/auth.js";
+import { requireLogin, requireRole } from "../../middleware/auth.js";
 import {
   registrationValidation,
   editValidation,
@@ -189,7 +189,7 @@ router.post("/", registrationValidation, processRegistration);
 /**
  * GET /register/list - Display all registered users
  */
-router.get("/list", requireLogin, showAllUsers);
+router.get("/list", requireLogin, requireRole("admin"), showAllUsers);
 
 /**
  * GET /register/:id/edit - Display edit account form
