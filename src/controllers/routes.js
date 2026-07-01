@@ -7,6 +7,8 @@ import { processLogout } from './forms/login.js';
 import { requireLogin } from '../middleware/auth.js';
 import { Router } from 'express';
 
+import { requireRole } from '../middleware/auth.js';
+
 const router = Router();
 
 // Add contact-specific styles to all contact routes
