@@ -8,6 +8,19 @@ INSERT INTO base_table (value) VALUES
     ('value2'),
     ('value3');
 
+CREATE TABLE IF NOT EXISTS cars_list (
+    id SERIAL PRIMARY KEY,
+    sold BOOLEAN NOT NULL,
+    make VARCHAR(255) NOT NULL,
+    model VARCHAR(255) NOT NULL,
+    color VARCHAR(255) NOT NULL,
+    year SMALLINT NOT NULL,
+    mileage FLOAT NOT NULL,
+    price FLOAT NOT NULL,
+    purchased_by INTEGER REFERENCES users(id) ON DELETE SET NULL,
+    listed_by INTEGER REFERENCES users(id) ON DELETE SET NULL
+);
+
 CREATE TABLE IF NOT EXISTS contact_form (
     id SERIAL PRIMARY KEY,
     subject VARCHAR(255) NOT NULL,
