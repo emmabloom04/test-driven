@@ -47,9 +47,23 @@ CREATE TABLE IF NOT EXISTS roles (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+CREATE TABLE IF NOT EXISTS service_request_status (
+    id SERIAL PRIMARY KEY,
+    request_status VARCHAR(50) UNIQUE NOT NULL
+);
+
 -- Seed roles (idempotent - safe to run multiple times)
 INSERT INTO roles (role_name, role_description) 
 VALUES 
     ('user', 'Standard user with basic access'),
+    ('employee', 'Employee with access to specific features')
     ('admin', 'Administrator with full system access')
 ON CONFLICT (role_name) DO NOTHING;
+
+INSERT INTO service_request_status (request_status)
+VALUES
+    ('Submitted'),
+    ('In Progress'),
+    ('Completed'),
+    ('Unable to Complete')
+ON CONFLICT (request_status) DO NOTHING;
