@@ -10,5 +10,8 @@ Include image of ERD from PgAdmin here
 # User Roles
 List all available roles and what they can do here
 
+# Test Account Credentials
+Include information for test account credentials here (not including password)
+
 ## Current build link
 https://test-driven.onrender.com/
