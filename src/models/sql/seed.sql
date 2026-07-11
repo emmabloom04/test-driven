@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS service_request_status (
 INSERT INTO roles (role_name, role_description) 
 VALUES 
     ('user', 'Standard user with basic access'),
-    ('employee', 'Employee with access to specific features')
+    ('employee', 'Employee with access to specific features'),
     ('admin', 'Administrator with full system access')
 ON CONFLICT (role_name) DO NOTHING;
 
