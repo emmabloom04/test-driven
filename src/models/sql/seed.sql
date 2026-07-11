@@ -17,7 +17,6 @@ CREATE TABLE IF NOT EXISTS cars_list (
     year SMALLINT NOT NULL,
     mileage FLOAT NOT NULL,
     price FLOAT NOT NULL,
-    image_url TEXT,
     purchased_by INTEGER REFERENCES users(id) ON DELETE SET NULL,
     listed_by INTEGER REFERENCES users(id) ON DELETE SET NULL
 );
