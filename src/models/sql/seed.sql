@@ -1,12 +1,3 @@
-CREATE TABLE IF NOT EXISTS base_table (
-    id SERIAL PRIMARY KEY,
-    value TEXT
-);
-
-INSERT INTO base_table (value) VALUES
-    ('value1'),
-    ('value2'),
-    ('value3');
 
 CREATE TABLE IF NOT EXISTS cars_list (
     id SERIAL PRIMARY KEY,
