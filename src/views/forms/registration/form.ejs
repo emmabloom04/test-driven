@@ -1,55 +1,91 @@
 <%- include('../../partials/header') %>
 <main>
-    <h1><%= title %></h1>
-    <p>
-        Register for a new account by providing your information below. All fields are required and passwords must meet security requirements.
-    </p>
+  <h1><%= title %></h1>
+  <p>
+    Register for a new account by providing your information below. All fields
+    are required and passwords must meet security requirements.
+  </p>
 
-    <form method="POST" action="/register" class="registration-form">
-        <!-- Name field -->
-        <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" minlength="2" placeholder="John Appleseed" required>
-        </div>
+  <form method="POST" action="/register" class="registration-form">
+    <!-- Name field -->
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        minlength="2"
+        placeholder="John Appleseed"
+        required
+      />
+    </div>
 
-        <!-- Email field -->
-        <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="example@email.com" required>
-        </div>
+    <!-- Email field -->
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        placeholder="example@email.com"
+        required
+      />
+    </div>
 
-        <!-- Email confirmation field -->
-        <div class="form-group">
-            <label for="emailConfirm">Confirm Email</label>
-            <input type="email" id="emailConfirm" name="emailConfirm" placeholder="example@email.com" required>
-        </div>
+    <!-- Email confirmation field -->
+    <div class="form-group">
+      <label for="emailConfirm">Confirm Email</label>
+      <input
+        type="email"
+        id="emailConfirm"
+        name="emailConfirm"
+        placeholder="example@email.com"
+        required
+      />
+    </div>
 
-        <!-- Password field -->
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" minlength="8" pattern="(?=.*[0-9])(?=.*[!@#$%^&*]).*" placeholder="Password" required>
-            <div class="help-text">
-                Must be at least 8 characters with a number and special character
-            </div>
-        </div>
+    <!-- Password field -->
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        minlength="8"
+        pattern="(?=.*[0-9])(?=.*[!@#$%^&*]).*"
+        placeholder="Password"
+        required
+      />
+      <div class="help-text">
+        Must be at least 8 characters with a number and special character
+      </div>
+    </div>
 
-        <!-- Password confirmation field -->
-        <div class="form-group">
-            <label for="passwordConfirm">Confirm Password</label>
-            <input type="password" id="passwordConfirm" name="passwordConfirm" minlength="8" pattern="(?=.*[0-9])(?=.*[!@#$%^&*]).*" placeholder="Confirm Password" required>
-        </div>
+    <!-- Password confirmation field -->
+    <div class="form-group">
+      <label for="passwordConfirm">Confirm Password</label>
+      <input
+        type="password"
+        id="passwordConfirm"
+        name="passwordConfirm"
+        minlength="8"
+        pattern="(?=.*[0-9])(?=.*[!@#$%^&*]).*"
+        placeholder="Confirm Password"
+        required
+      />
+    </div>
 
-        <div class="form-group">
-            <label for="roles">Select Role</label>
-            <select name="roles" id="roles">
-                <option value="user" selected>Standard User</option>
-                <option value="employee">Employee</option>
-                <option value="admin">Admin</option>
-            </select>
-        </div>
-        
-        <!-- Submit button -->
-        <button type="submit">Create Account</button>
-    </form>
+    <div class="form-group">
+      <label for="roleId">Select Role</label>
+      <select name="roleId" id="roleId">
+        <option value="1" selected>Standard User</option>
+        <option value="2">Employee</option>
+        <option value="3">Admin</option>
+      </select>
+    </div>
+
+    <!-- Submit button -->
+    <button type="submit">Create Account</button>
+  </form>
 </main>
 <%- include('../../partials/footer') %>
