@@ -33,6 +33,9 @@ const addLocalVariables = (req, res, next) => {
     res.locals.isAdmin = Boolean(
         res.locals.currentUser && res.locals.currentUser.roleName?.toLowerCase() === 'admin'
     );
+    res.locals.isEmployee = Boolean(
+        res.locals.currentUser && res.locals.currentUser.roleName?.toLowerCase() === 'employee'
+    );
 
     res.locals.currentYear = new Date().getFullYear();
 

@@ -80,6 +80,6 @@ router.post('/', contactValidation, handleContactSubmission);
 /**
  * GET /contact/responses - Display all contact form submissions
  */
-router.get('/responses', requireLogin, requireRole('admin'), showContactResponses);
+router.get('/responses', requireLogin, requireRole('admin', 'employee'), showContactResponses);
 
 export default router;
