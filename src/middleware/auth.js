@@ -23,27 +23,23 @@ const requireLogin = (req, res, next) => {
  * @param {string} roleName - The role name required (e.g., 'admin', 'user')
  * @returns {Function} Express middleware function
  */
-const requireRole = (roleName) => {
-    const requiredRole = roleName?.toLowerCase();
+const requireRole = (...allowedRoles) => {
+  return (req, res, next) => {
+    if (!req.session || !req.session.user) {
+      req.flash("error", "You must be logged in to access this page.");
+      return res.redirect("/login");
+    }
 
-    return (req, res, next) => {
-        // Check if user is logged in first
-        if (!req.session || !req.session.user) {
-            req.flash('error', 'You must be logged in to access this page.');
-            return res.redirect('/login');
-        }
+    const userRole = req.session.user.roleName?.toLowerCase();
+    const allowed = allowedRoles.map((role) => role?.toLowerCase());
 
-        const userRole = req.session.user.roleName?.toLowerCase();
+    if (!allowed.includes(userRole)) {
+      req.flash("error", "You do not have permission to access this page.");
+      return res.redirect("/");
+    }
 
-        // Check if user's role matches the required role
-        if (userRole !== requiredRole) {
-            req.flash('error', 'You do not have permission to access this page.');
-            return res.redirect('/');
-        }
-
-        // User has required role, continue
-        next();
-    };
+    next();
+  };
 };
 
 export { requireLogin, requireRole };

@@ -20,15 +20,16 @@ const emailExists = async (email) => {
  * @param {string} name - The user's full name
  * @param {string} email - The user's email address
  * @param {string} hashedPassword - The bcrypt-hashed password
+ * @param {number} roleId - The selected role ID from the roles table
  * @returns {Promise<Object>} The newly created user record (without password)
  */
-const saveUser = async (name, email, hashedPassword) => {
+const saveUser = async (name, email, hashedPassword, roleId = 1) => {
   const query = `
-        INSERT INTO users (name, email, password)
-        VALUES ($1, $2, $3)
-        RETURNING id, name, email, created_at
+        INSERT INTO users (name, email, password, role_id)
+        VALUES ($1, $2, $3, $4)
+        RETURNING id, name, email, role_id, created_at
     `;
-  const result = await db.query(query, [name, email, hashedPassword]);
+  const result = await db.query(query, [name, email, hashedPassword, roleId]);
   return result.rows[0];
 };
 

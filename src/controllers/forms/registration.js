@@ -42,7 +42,11 @@ const processRegistration = async (req, res) => {
   }
 
   // Extract validated data from request body
-  const { name, email, password } = req.body;
+  const { name, email, password, roleId } = req.body;
+  const normalizedRoleId = Number.parseInt(roleId, 10);
+  const safeRoleId = Number.isInteger(normalizedRoleId) && normalizedRoleId > 0
+    ? normalizedRoleId
+    : 1;
 
   try {
     // Check if email already exists in database
@@ -56,9 +60,8 @@ const processRegistration = async (req, res) => {
     // Hash the password before saving to database
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // Save user to database with hashed password
-    // Call saveUser(name, email, hashedPassword)
-    await saveUser(name, email, hashedPassword);
+    // Save user to database with hashed password and chosen role ID
+    await saveUser(name, email, hashedPassword, safeRoleId);
 
     req.flash("success", "Registration successful");
     res.redirect("/login");

@@ -11,7 +11,9 @@ Include image of ERD from PgAdmin here
 List all available roles and what they can do here
 
 # Test Account Credentials
-Include information for test account credentials here (not including password)
+Standard User: standardtestuser@example.com
+Employee: testemployee@example.com
+Admin: testadmin@example.com
 
 # Known Limitations
 Add known limitations here, when project is completed
