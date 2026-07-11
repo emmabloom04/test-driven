@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS service_requests (
     user_id INTEGER NOT NULL REFERENCES users(id),
     vehicle_make VARCHAR(50) NOT NULL,
     vehicle_model VARCHAR(50) NOT NULL,
-    vehicle_year VARCHAR(50) NOT NULL
+    vehicle_year VARCHAR(50) NOT NULL,
     service_description TEXT NOT NULL,
     request_status_id INTEGER NOT NULL DEFAULT 1 REFERENCES service_request_status(id),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
