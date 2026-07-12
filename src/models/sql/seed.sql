@@ -62,6 +62,15 @@ CREATE TABLE IF NOT EXISTS cars_list (
     FOREIGN KEY (listed_by) REFERENCES users(id) ON DELETE SET NULL
 );
 
+CREATE TABLE IF NOT EXISTS vehicle_images (
+    id SERIAL PRIMARY KEY,
+    image_url VARCHAR(255) NOT NULL,
+    vehicle_id INTEGER NOT NULL,
+    FOREIGN KEY (vehicle_id) REFERENCES cars_list(id),
+    alt_text VARCHAR(255),
+    is_primary BOOLEAN DEFAULT FALSE
+);
+
 CREATE TABLE IF NOT EXISTS contact_form (
     id SERIAL PRIMARY KEY,
     subject VARCHAR(255) NOT NULL,
