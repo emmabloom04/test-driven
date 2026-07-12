@@ -4,12 +4,16 @@ CREATE TABLE IF NOT EXISTS cars_list (
     sold BOOLEAN NOT NULL,
     make VARCHAR(255) NOT NULL,
     model VARCHAR(255) NOT NULL,
-    color VARCHAR(255) NOT NULL,
+    exterior_color VARCHAR(255) NOT NULL,
+    interior_color VARCHAR(255) NOT NULL,
+    fuel_type VARCHAR(255) NOT NULL,
     year SMALLINT NOT NULL,
     mileage FLOAT NOT NULL,
     price FLOAT NOT NULL,
-    purchased_by INTEGER REFERENCES users(id) ON DELETE SET NULL,
-    listed_by INTEGER REFERENCES users(id) ON DELETE SET NULL
+    purchased_by INTEGER, 
+    FOREIGN KEY (purchased_by) REFERENCES users(id) ON DELETE SET NULL,
+    listed_by INTEGER,
+    FOREIGN KEY (listed_by) REFERENCES users(id) ON DELETE SET NULL
 );
 
 CREATE TABLE IF NOT EXISTS contact_form (
@@ -24,7 +28,8 @@ CREATE TABLE IF NOT EXISTS users (
     name VARCHAR(255) NOT NULL,
     email VARCHAR(255) UNIQUE NOT NULL,
     password VARCHAR(255) NOT NULL,
-    role_id INTEGER NOT NULL DEFAULT 1 REFERENCES roles(id),
+    role_id INTEGER NOT NULL DEFAULT 1, 
+    FOREIGN KEY (role_id) REFERENCES roles(id),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
@@ -44,28 +49,34 @@ CREATE TABLE IF NOT EXISTS service_request_status (
 
 CREATE TABLE IF NOT EXISTS service_requests (
     id SERIAL PRIMARY KEY,
-    user_id INTEGER NOT NULL REFERENCES users(id),
+    user_id INTEGER NOT NULL, 
+    FOREIGN KEY (user_id) REFERENCES users(id),
     vehicle_make VARCHAR(50) NOT NULL,
     vehicle_model VARCHAR(50) NOT NULL,
     vehicle_year VARCHAR(50) NOT NULL,
     service_description TEXT NOT NULL,
-    request_status_id INTEGER NOT NULL DEFAULT 1 REFERENCES service_request_status(id),
+    request_status_id INTEGER NOT NULL DEFAULT 1,
+    FOREIGN KEY (request_status_id) REFERENCES service_request_status(id),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE IF NOT EXISTS service_request_notes (
     id SERIAL PRIMARY KEY,
-    service_request_id INTEGER NOT NULL REFERENCES service_requests(id),
-    employee_id INTEGER NOT NULL REFERENCES users(id),
+    service_request_id INTEGER NOT NULL,
+    FOREIGN KEY (service_request_id) REFERENCES service_requests(id),
+    employee_id INTEGER NOT NULL,
+    FOREIGN KEY (employee_id) REFERENCES users(id),
     note TEXT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE IF NOT EXISTS reviews (
     id SERIAL PRIMARY KEY,
-    user_id INTEGER NOT NULL REFERENCES users(id),
-    car_id INTEGER NOT NULL REFERENCES cars_list(id),
+    user_id INTEGER NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    car_id INTEGER NOT NULL,
+    FOREIGN KEY (car_id) REFERENCES cars_list(id),
     comment TEXT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
