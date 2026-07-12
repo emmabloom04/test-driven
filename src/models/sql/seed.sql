@@ -54,6 +54,14 @@ CREATE TABLE IF NOT EXISTS service_requests (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+CREATE TABLE IF NOT EXISTS service_request_notes (
+    id SERIAL PRIMARY KEY,
+    service_request_id INTEGER NOT NULL REFERENCES service_requests(id),
+    employee_id INTEGER NOT NULL REFERENCES users(id),
+    note TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
 -- Seed roles (idempotent - safe to run multiple times)
 INSERT INTO roles (role_name, role_description) 
 VALUES 
