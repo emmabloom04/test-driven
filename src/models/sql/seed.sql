@@ -1,8 +1,19 @@
 
 CREATE TABLE IF NOT EXISTS categories (
     id SERIAL PRIMARY KEY,
-    name VARCHAR(255) NOT NULL
+    name VARCHAR(255) UNIQUE NOT NULL
 );
+
+INSERT INTO categories (name)
+VALUES
+    ('Sedan'),
+    ('SUV'),
+    ('Minivan'),
+    ('Sports Car'),
+    ('Hatchback'),
+    ('Truck'),
+    ('Convertible')
+ON CONFLICT (name) DO NOTHING;
 
 -- Roles table for role-based access control
 CREATE TABLE IF NOT EXISTS roles (
@@ -33,6 +44,7 @@ CREATE TABLE IF NOT EXISTS users (
 
 CREATE TABLE IF NOT EXISTS cars_list (
     id SERIAL PRIMARY KEY,
+    vin VARCHAR(17) UNIQUE NOT NULL,
     sold BOOLEAN NOT NULL,
     make VARCHAR(255) NOT NULL,
     model VARCHAR(255) NOT NULL,
