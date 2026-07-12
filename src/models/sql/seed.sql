@@ -62,6 +62,15 @@ CREATE TABLE IF NOT EXISTS service_request_notes (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+CREATE TABLE IF NOT EXISTS reviews (
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER NOT NULL REFERENCES users(id),
+    car_id INTEGER NOT NULL REFERENCES cars_list(id),
+    comment TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
 -- Seed roles (idempotent - safe to run multiple times)
 INSERT INTO roles (role_name, role_description) 
 VALUES 
