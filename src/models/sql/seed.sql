@@ -119,7 +119,7 @@ CREATE TABLE IF NOT EXISTS service_requests (
     user_id INTEGER NOT NULL, 
     FOREIGN KEY (user_id) REFERENCES users(id),
     vehicle_id INTEGER NOT NULL,
-    FOREIGN KEY (vehicle_id) REFERENCES cars_list(id),
+    FOREIGN KEY (vehicle_id) REFERENCES cars_list(id) ON DELETE CASCADE,
     service_description TEXT NOT NULL,
     request_status_id INTEGER NOT NULL DEFAULT 1,
     FOREIGN KEY (request_status_id) REFERENCES service_request_status(id),
@@ -132,7 +132,7 @@ CREATE TABLE IF NOT EXISTS service_request_notes (
     service_request_id INTEGER NOT NULL,
     FOREIGN KEY (service_request_id) REFERENCES service_requests(id),
     employee_id INTEGER NOT NULL,
-    FOREIGN KEY (employee_id) REFERENCES users(id),
+    FOREIGN KEY (employee_id) REFERENCES users(id) ON DELETE SET NULL,
     note TEXT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
@@ -141,7 +141,7 @@ CREATE TABLE IF NOT EXISTS reviews (
     id SERIAL PRIMARY KEY,
     user_id INTEGER NOT NULL,
     FOREIGN KEY (user_id) REFERENCES users(id),
-    car_id INTEGER NOT NULL,
+    car_id INTEGER ON DELETE SET NULL,
     FOREIGN KEY (car_id) REFERENCES cars_list(id),
     comment TEXT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
