@@ -131,7 +131,7 @@ CREATE TABLE IF NOT EXISTS service_request_notes (
     id SERIAL PRIMARY KEY,
     service_request_id INTEGER NOT NULL,
     FOREIGN KEY (service_request_id) REFERENCES service_requests(id),
-    employee_id INTEGER NOT NULL,
+    employee_id INTEGER,
     FOREIGN KEY (employee_id) REFERENCES users(id) ON DELETE SET NULL,
     note TEXT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
@@ -141,8 +141,8 @@ CREATE TABLE IF NOT EXISTS reviews (
     id SERIAL PRIMARY KEY,
     user_id INTEGER NOT NULL,
     FOREIGN KEY (user_id) REFERENCES users(id),
-    car_id INTEGER ON DELETE SET NULL,
-    FOREIGN KEY (car_id) REFERENCES cars_list(id),
+    car_id INTEGER,
+    FOREIGN KEY (car_id) REFERENCES cars_list(id) ON DELETE SET NULL,
     comment TEXT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
