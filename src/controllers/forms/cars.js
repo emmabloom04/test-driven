@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { requireLogin } from '../../middleware/auth.js';
-import { createSellACarForm, showCarsForSale } from '../../models/forms/cars.js';
+import { createSellACarForm, getAllCars, showCarsForSale } from '../../models/forms/cars.js';
 
 const router = Router();
 
@@ -17,9 +17,17 @@ const showSellACarForm = (req, res) => {
  * Display all cars for sale.
  */
 const showCarsForSale = (req, res) => {
+    let carsList = [];
+
+    try {
+        carsList = await getAllCars();
+    } catch (error) {
+        console.error('Error retrieving cars:', error);
+    }
 
     res.render('forms/cars/list', {
-        title: 'Cars For Sale'
+        title: 'Cars For Sale',
+        carsList
     });
 };
 
