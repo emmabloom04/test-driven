@@ -133,9 +133,9 @@ VALUES
     ('https://s1.cdn.autoevolution.com/images/news/gallery/2015-jeep-grand-cherokee-srt-red-vapor-special-edition-now-available-to-order-in-the-uk-photo-gallery_7.jpg', 7, 'back view of a red jeep grand cherokee', FALSE),
 
     -- black bmw 3 series
-    ('image_url', 8, 'alt_text', TRUE),
-    ('image_url', 8, 'alt_text', FALSE),
-    ('image_url', 8, 'alt_text', FALSE),
+    ('https://weownanycar.co.uk/wp-content/uploads/2021/07/Used_2017_BLACK_BMW_3-SERIES_2.0-318D-M-SPORT-TOURING-5d-AUTO-148-BHP_Estate_for_sale_in_Manchester-5.jpg', 8, 'front view of a black bmw 3 series', TRUE),
+    ('http://images.gtcarlot.com/pictures/116809718.jpg', 8, 'side view of a black bmw 3 series', FALSE),
+    ('https://prod.pictures.autoscout24.net/listing-images/134031cd-6a56-4d7d-97a6-838c34098703_6c58c360-28c5-4839-b7e1-8c7e27c647a5.jpg/1920x1080.webp', 8, 'back view of a black bmw 3 series', FALSE),
 
     -- white mazda cx-5
     ('image_url', 9, 'alt_text', TRUE),
