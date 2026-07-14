@@ -123,9 +123,9 @@ VALUES
     ('https://cdn.jdpower.com/JDPA_2022%20Subaru%20Outback%20Wilderness%20Green%20Rear%20Quarter%20View.jpg', 5, 'back view of green subaru outback', FALSE),
 
     -- gray nissan altima
-    ('image_url', 6, 'alt_text', TRUE),
-    ('image_url', 6, 'alt_text', FALSE),
-    ('image_url', 6, 'alt_text', FALSE),
+    ('https://www.dubicars.com/images/c52cf0/fw_1300x760/syria-motors/e6cbd1aa-8afc-45f2-b7eb-8c90ae8e4836.jpg', 6, 'front view of a gray nissan altima', TRUE),
+    ('http://images.gtcarlot.com/pictures/145884778.jpg', 6, 'side view of a gray nissan altima', FALSE),
+    ('https://bidhistory.org/uploads/8Vui164gdHA4jpK7uXaniMRKWg/1n4bl4bv3kc166469-nissan-altima-2019-2.jpg', 6, 'back view of a gray nissan altima', FALSE),
 
     -- red jeep grand cherokee
     ('image_url', 7, 'alt_text', TRUE),
