@@ -128,9 +128,9 @@ VALUES
     ('https://bidhistory.org/uploads/8Vui164gdHA4jpK7uXaniMRKWg/1n4bl4bv3kc166469-nissan-altima-2019-2.jpg', 6, 'back view of a gray nissan altima', FALSE),
 
     -- red jeep grand cherokee
-    ('image_url', 7, 'alt_text', TRUE),
-    ('image_url', 7, 'alt_text', FALSE),
-    ('image_url', 7, 'alt_text', FALSE),
+    ('https://www.primemotorz.com/imagetag/857/main/l/Used-2019-Jeep-Grand-Cherokee-LIMITED-X-4X4-Limited-X-1628629322.jpg', 7, 'front view of a red jeep grand cherokee', TRUE),
+    ('https://st3.stat.vin/files/1C4RJFLG5JC212215/IAAI/37543608/photo/photo_11.jpg', 7, 'side view of a red jeep grand cherokee', FALSE),
+    ('https://s1.cdn.autoevolution.com/images/news/gallery/2015-jeep-grand-cherokee-srt-red-vapor-special-edition-now-available-to-order-in-the-uk-photo-gallery_7.jpg', 7, 'back view of a red jeep grand cherokee', FALSE),
 
     -- black bmw 3 series
     ('image_url', 8, 'alt_text', TRUE),
