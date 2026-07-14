@@ -19,8 +19,8 @@
                     <p>$<%= car.price %></p>
                     <% if (imagesList && imagesList.length > 0) { %>
                         <% imagesList.forEach(image => { %> 
-                            <% if (<%= image.vehicle_id %> == <%= car.id %>) { %>
-                                
+                            <% if (image.vehicle_id == car.id) { %>
+                                <img src="<%= image.image_url %>" alt="<%= image.alt_text %>">
                             <% } else { %> 
                                 <p>No images found for <%= car.year %> <%= car.make %> <%= car.model %></p>
                             <% } %>
