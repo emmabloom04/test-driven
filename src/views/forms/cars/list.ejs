@@ -17,6 +17,17 @@
                     <p><%= car.fuel_type %></p>
                     <p><%= car.mileage %> mi</p>
                     <p>$<%= car.price %></p>
+                    <% if (imagesList && imagesList.length > 0) { %>
+                        <% imagesList.forEach(image => { %> 
+                            <% if (<%= image.vehicle_id %> == <%= car.id %>) { %>
+                                
+                            <% } else { %> 
+                                <p>No images found for <%= car.year %> <%= car.make %> <%= car.model %></p>
+                            <% } %>
+                        <% }); %>
+                    <% } else { %>
+
+                    <% } %>
                 </div>
             <% }); %>
         </div>
