@@ -98,9 +98,9 @@ CREATE TABLE IF NOT EXISTS vehicle_images (
 INSERT INTO vehicle_images (image_url, vehicle_id, alt_text, is_primary)
 VALUES
     -- silver toyota camry
-    ('http://images.gtcarlot.com/pictures/130357801.jpg', 1, 'front view of silver toyota camry', TRUE),
-    ('http://images.gtcarlot.com/pictures/138679820.jpg', 1, 'side view of silver toyota camry', FALSE),
-    ('http://images.gtcarlot.com/pictures/130357764.jpg', 1, 'back view of silver toyota camry', FALSE),
+    ('https://images.prd.kavak.io/eyJidWNrZXQiOiJrYXZhay1pbWFnZXMiLCJrZXkiOiJpbWFnZXMvMzMxNjUzL0VYVEVSSU9SLWZyb250U2lkZVBpbG90TmVhci0xNzIwOTA3NjE5NjYwLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjU0MCwiaGVpZ2h0IjozMTB9fX0=', 1, 'front view of silver toyota camry', TRUE),
+    ('https://autoconsultant.com.ua/images/copart/08d4e001c0e519f5-toyota-camry-2019-4t1b11hk2ku186519-img1.jpg', 1, 'side view of silver toyota camry', FALSE),
+    ('https://d2ivfcfbdvj3sm.cloudfront.net/7fc965ab77efe6e0fa62e4ca1ea7673bb2594357021e3d8e88cb/stills_0640_png/MY2019/13269/13269_st0640_119.png', 1, 'back view of silver toyota camry', FALSE),
 
     -- blue honda civic
     ('https://www.usnews.com/object/image/0000018b-ac16-d133-a3ff-bddee3010000/https-cars-dms-usnews-com-static-uploads-images-auto-custom-14219-original-2020-honda-civic-18.jpg?update-time=1568743572000&size=responsiveGallery', 2, 'front view of blue honda civic', TRUE),
@@ -114,7 +114,7 @@ VALUES
 
     -- white chevrolet malibu
     ('https://di-uploads-pod10.dealerinspire.com/chevycenter/uploads/2020/07/2017-Chevrolet-Malibu-PREMIER-Summit-White.jpg', 4, 'front view of white chevrolet malibu', TRUE),
-    ('http://images.gtcarlot.com/pictures/115902550.jpg', 4, 'side view of white chevrolet malibu', FALSE),
+    ('https://www.dubicars.com/images/6bd48d/w_1300x760/honey-gidosha-used-cars-tr-llc-sole-proprietorship/70f09bc4-f91b-44e3-b5ba-1adae67e9cf5.jpeg', 4, 'side view of white chevrolet malibu', FALSE),
     ('https://platform.cstatic-images.com/in/v2/stock_photos/dab8048a-8834-4cdc-ac48-32a095e9c741/41b125db-22ad-429c-9662-fd60ee642965.png', 4, 'back view of white chevrolet malibu', FALSE),
 
     -- green subaru outback
@@ -124,7 +124,7 @@ VALUES
 
     -- gray nissan altima
     ('https://www.dubicars.com/images/c52cf0/fw_1300x760/syria-motors/e6cbd1aa-8afc-45f2-b7eb-8c90ae8e4836.jpg', 6, 'front view of a gray nissan altima', TRUE),
-    ('http://images.gtcarlot.com/pictures/145884778.jpg', 6, 'side view of a gray nissan altima', FALSE),
+    ('https://bidhistory.org/uploads/8Vui164gdHA4jpK7pquAkDRYZx/1n4bl4bv3kc166469-nissan-altima-2019-1.jpg', 6, 'side view of a gray nissan altima', FALSE),
     ('https://bidhistory.org/uploads/8Vui164gdHA4jpK7uXaniMRKWg/1n4bl4bv3kc166469-nissan-altima-2019-2.jpg', 6, 'back view of a gray nissan altima', FALSE),
 
     -- red jeep grand cherokee
@@ -134,12 +134,12 @@ VALUES
 
     -- black bmw 3 series
     ('https://weownanycar.co.uk/wp-content/uploads/2021/07/Used_2017_BLACK_BMW_3-SERIES_2.0-318D-M-SPORT-TOURING-5d-AUTO-148-BHP_Estate_for_sale_in_Manchester-5.jpg', 8, 'front view of a black bmw 3 series', TRUE),
-    ('http://images.gtcarlot.com/pictures/116809718.jpg', 8, 'side view of a black bmw 3 series', FALSE),
+    ('https://static1.topspeedimages.com/wordpress/wp-content/uploads/2023/06/2011_bmw_335d-sedan_img_9555-2-33304.jpg', 8, 'side view of a black bmw 3 series', FALSE),
     ('https://prod.pictures.autoscout24.net/listing-images/134031cd-6a56-4d7d-97a6-838c34098703_6c58c360-28c5-4839-b7e1-8c7e27c647a5.jpg/1920x1080.webp', 8, 'back view of a black bmw 3 series', FALSE),
 
     -- white mazda cx-5
     ('https://i.ytimg.com/vi/NbsNO7Tyk24/maxresdefault.jpg', 9, 'front view of a white mazda cx-5', TRUE),
-    ('http://images.gtcarlot.com/pictures/146669509.jpg', 9, 'side view of a white mazda cx-5', FALSE),
+    ('https://media.adtorqueedge.com/new-cars/mazda-nz/cx-5/colours/arctic-white.jpg', 9, 'side view of a white mazda cx-5', FALSE),
     ('https://autoimage.capitalone.com/stock-media/chrome/2025-Mazda-CX-5-2.5_S_Preferred_Package-51K-cc_2025MAS060010_02_2100_51K.png?width=640&height=480', 9, 'back view of a white mazda cx-5', FALSE),
 
     -- silver hyundai elantra
@@ -164,7 +164,7 @@ VALUES
 
     -- white chevrolet equinox
     ('https://collisiondocsandiego.com/wp-content/uploads/2025/09/chevrolet-equinox-windshield-replaced-san-diego.png', 14, 'front view of a white chevrolet equinox', TRUE),
-    ('http://images.gtcarlot.com/pictures/144376374.jpg', 14, 'side view of a white chevrolet equinox', FALSE),
+    ('https://autoimage.capitalone.com/stock-media/chrome/2025-Chevrolet-Equinox-FWD_LT-GAZ-cc_2025CHS151939846_03_2100_GAZ.png?width=640&height=480', 14, 'side view of a white chevrolet equinox', FALSE),
     ('https://www.dubicars.com/images/d6d26a/w_1300x760/colombia-used-cars/dc7e8373-c13b-4f57-b982-386f6755de7e.jpeg', 14, 'back view of a white chevrolet equinox', FALSE),
 
     -- black honda cr-v
@@ -174,7 +174,7 @@ VALUES
 
     -- blue ford escape
     ('https://d3kmoxju39w6te.cloudfront.net/315b47f7407335704361bd04716f784f/img_0_lg.jpg', 16, 'front view of a blue ford escape', TRUE),
-    ('http://images.gtcarlot.com/pictures/128362257.jpg', 16, 'side view of a blue ford escape', FALSE),
+    ('https://static.carsdn.co/cldstatic/wp-content/uploads/ford-escape-titanium-2020-02-blue--exterior--profile--rural.jpg', 16, 'side view of a blue ford escape', FALSE),
     ('https://carrosrd-media.s3.amazonaws.com/listings/71708/full_174370362203889359.jpg', 16, 'back view of a blue ford escape', FALSE),
 
     -- silver audi a4
@@ -194,7 +194,7 @@ VALUES
 
     -- white mazda mazda3
     ('https://images.squarespace-cdn.com/content/v1/5b2437bcc3c16a6fea91cd4d/1696368503048-U85V4ZWQL6ADD153BYPE/2023-09-19+14.00.27.jpg', 20, 'front view of a white mazda mazda3', TRUE),
-    ('http://images.gtcarlot.com/pictures/141453532.jpg', 20, 'side view of a white mazda mazda3', FALSE),
+    ('https://www.buildpriceoption.com/wp-content/uploads/2022/11/Snowflake-White-Pearl.jpg', 20, 'side view of a white mazda mazda3', FALSE),
     ('https://images.carexpert.com.au/resize/3000/-/app/uploads/2021/06/2021-Mazda-3-G25-Astina-Hatch-13.jpg', 20, 'back view of a white mazda mazda3', FALSE)
 ON CONFLICT (image_url) DO NOTHING;
 
