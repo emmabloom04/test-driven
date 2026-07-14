@@ -7,6 +7,12 @@
             <% carsList.forEach(car => { %>
                 <div>
                     <h3><%= car.year %> <%= car.make %> <%= car.model %></h3>
+                    <% if (!car.sold) { %>
+                        <p>AVAILABLE</p>
+                    <% } else { %>
+                        <p>SOLD</p>
+                    <% } %>
+                    <p><%= car.category %></p>
                     <p>Exterior: <%= car.exterior_color %></p>
                     <p>Interior: <%= car.interior_color %></p>
                     <p><%= car.fuel_type %></p>
