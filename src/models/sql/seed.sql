@@ -98,9 +98,9 @@ CREATE TABLE IF NOT EXISTS vehicle_images (
 INSERT INTO vehicle_images (image_url, vehicle_id, alt_text, is_primary)
 VALUES
     -- silver toyota camry
-    ('image_url', 1, 'alt_text', TRUE),
-    ('image_url', 1, 'alt_text', FALSE),
-    ('image_url', 1, 'alt_text', FALSE),
+    ('http://images.gtcarlot.com/pictures/138679820.jpg', 1, 'side view of silver toyota camry', TRUE),
+    ('http://images.gtcarlot.com/pictures/130357801.jpg', 1, 'front view of silver toyota camry', FALSE),
+    ('http://images.gtcarlot.com/pictures/130357764.jpg', 1, 'back view of silver toyota camry', FALSE),
 
     -- blue honda civic
     ('image_url', 2, 'alt_text', TRUE),
