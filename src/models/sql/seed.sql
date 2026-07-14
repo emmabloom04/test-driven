@@ -158,9 +158,9 @@ VALUES
     ('https://images.contentstack.io/v3/assets/blt75c85f063ac4ae63/blt6f770c392d3ae4ca/6605c3c379ac3ebba0aec385/FCP_Euro_Buyers_Guide_Volkswagen_Jetta_Mk6_GLI.jpg', 12, 'back view of a gray volkswagen jetta', FALSE),
 
     -- red toyota rav4
-    ('image_url', 13, 'alt_text', TRUE),
-    ('image_url', 13, 'alt_text', FALSE),
-    ('image_url', 13, 'alt_text', FALSE),
+    ('https://www.usnews.com/object/image/0000018c-92c6-d954-a7bd-96e7aabd0000/2020-toyota-rav4-limited-hv-rubyflarepearl-12.jpg?update-time=1703269542401&size=responsiveGallery', 13, 'front view of a red toyota rav4', TRUE),
+    ('https://www.kbb.com/m/4f37f931e8f7f2ef/OG-2026-toyota-rav4-gr-sport-profile-jpg.jpg', 13, 'side view of a red toyota rav4', FALSE),
+    ('https://imagecdnblogsa.carbay.com/wp-content/uploads/2025/05/26170700/2026-toyota-rav4-gr-sport-exteri-2.jpg', 13, 'back view of a red toyota rav4', FALSE),
 
     -- white chevrolet equinox
     ('image_url', 14, 'alt_text', TRUE),
