@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { requireLogin } from '../../middleware/auth.js';
-import { createSellACarForm, getAllCars } from '../../models/forms/cars.js';
+import { createSellACarForm, getAllCars, getAllVehicleImages } from '../../models/forms/cars.js';
 
 const router = Router();
 
@@ -18,16 +18,23 @@ const showSellACarForm = (req, res) => {
  */
 const showCarsForSale = async (req, res) => {
     let carsList = [];
+    let imagesList = [];
 
     try {
         carsList = await getAllCars();
     } catch (error) {
         console.error('Error retrieving cars:', error);
     }
+    try {
+        imagesList = await getAllVehicleImages();
+    } catch (error) {
+        console.error('Error retrieving vehicle images:', error);
+    }   
 
     res.render('forms/cars/list', {
         title: 'Cars For Sale',
-        carsList
+        carsList,
+        imagesList
     });
 };
 
