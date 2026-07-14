@@ -98,7 +98,7 @@ CREATE TABLE IF NOT EXISTS vehicle_images (
 INSERT INTO vehicle_images (image_url, vehicle_id, alt_text, is_primary)
 VALUES
     -- silver toyota camry
-    ('http://images.gtcarlot.com/pictures/130357801.jpg', 1, 'front view of silver toyota camry', TRUE),
+    ('https://images.prd.kavak.io/eyJidWNrZXQiOiJrYXZhay1pbWFnZXMiLCJrZXkiOiJpbWFnZXMvMzMxNjUzL0VYVEVSSU9SLWZyb250U2lkZVBpbG90TmVhci0xNzIwOTA3NjE5NjYwLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjU0MCwiaGVpZ2h0IjozMTB9fX0=', 1, 'front view of silver toyota camry', TRUE),
     ('http://images.gtcarlot.com/pictures/138679820.jpg', 1, 'side view of silver toyota camry', FALSE),
     ('http://images.gtcarlot.com/pictures/130357764.jpg', 1, 'back view of silver toyota camry', FALSE),
 
