@@ -98,8 +98,8 @@ CREATE TABLE IF NOT EXISTS vehicle_images (
 INSERT INTO vehicle_images (image_url, vehicle_id, alt_text, is_primary)
 VALUES
     -- silver toyota camry
-    ('http://images.gtcarlot.com/pictures/138679820.jpg', 1, 'side view of silver toyota camry', TRUE),
-    ('http://images.gtcarlot.com/pictures/130357801.jpg', 1, 'front view of silver toyota camry', FALSE),
+    ('http://images.gtcarlot.com/pictures/130357801.jpg', 1, 'front view of silver toyota camry', TRUE),
+    ('http://images.gtcarlot.com/pictures/138679820.jpg', 1, 'side view of silver toyota camry', FALSE),
     ('http://images.gtcarlot.com/pictures/130357764.jpg', 1, 'back view of silver toyota camry', FALSE),
 
     -- blue honda civic
@@ -108,9 +108,9 @@ VALUES
     ('https://newengland.hondadealers.com/-/media/Honda-Automobiles/Vehicles/2019/Civic-Sedan/00-NEW-VLP/Exterior/1-Styling/MY19-CIVIC-SEDAN-transfer-EXTERIOR-Styling-06-Sport-1400-2x.jpg', 2, 'back view of blue honda civic', FALSE),
 
     -- black ford f-150
-    ('image_url', 3, 'alt_text', TRUE),
-    ('image_url', 3, 'alt_text', FALSE),
-    ('image_url', 3, 'alt_text', FALSE),
+    ('https://cdn.dealeraccelerate.com/adrenalin/1/2606/68940/1920x1440/2018-ford-f-150-raptor', 3, 'front view of black ford f-150', TRUE),
+    ('https://boostcarimages.blob.core.windows.net/carimages/176/5296084/2018%20Ford%20F-150%20637449063567732427_3.jpg', 3, 'side view of black ford f-150', FALSE),
+    ('https://i.pinimg.com/originals/f6/25/43/f62543e6a4cd5da35ef99acb70c52433.jpg', 3, 'back view of black ford f-150', FALSE),
 
     -- white chevrolet malibu
     ('image_url', 4, 'alt_text', TRUE),
