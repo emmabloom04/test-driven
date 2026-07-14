@@ -173,9 +173,9 @@ VALUES
     ('https://cfwww.hgregoire.com/photos/by-size/615517/3648x2048/6906602.JPG', 15, 'back view of a black honda cr-v', FALSE),
 
     -- blue ford escape
-    ('image_url', 16, 'alt_text', TRUE),
-    ('image_url', 16, 'alt_text', FALSE),
-    ('image_url', 16, 'alt_text', FALSE),
+    ('https://d3kmoxju39w6te.cloudfront.net/315b47f7407335704361bd04716f784f/img_0_lg.jpg', 16, 'front view of a blue ford escape', TRUE),
+    ('http://images.gtcarlot.com/pictures/128362257.jpg', 16, 'side view of a blue ford escape', FALSE),
+    ('https://carrosrd-media.s3.amazonaws.com/listings/71708/full_174370362203889359.jpg', 16, 'back view of a blue ford escape', FALSE),
 
     -- silver audi a4
     ('image_url', 17, 'alt_text', TRUE),
