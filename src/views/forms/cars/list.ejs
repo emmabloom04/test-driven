@@ -20,7 +20,9 @@
                     <% if (imagesList && imagesList.length > 0) { %>
                         <% imagesList.forEach(image => { %> 
                             <% if (image.vehicle_id == car.id) { %>
-                                <img src="<%= image.image_url %>" alt="<%= image.alt_text %>">
+                                <% if (image.is_primary) { %>
+                                    <img src="<%= image.image_url %>" alt="<%= image.alt_text %>">
+                                <% } %>
                             <% } %> 
                         <% }); %>
                     <% } else { %>
