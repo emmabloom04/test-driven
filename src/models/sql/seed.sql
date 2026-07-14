@@ -178,9 +178,9 @@ VALUES
     ('https://carrosrd-media.s3.amazonaws.com/listings/71708/full_174370362203889359.jpg', 16, 'back view of a blue ford escape', FALSE),
 
     -- silver audi a4
-    ('image_url', 17, 'alt_text', TRUE),
-    ('image_url', 17, 'alt_text', FALSE),
-    ('image_url', 17, 'alt_text', FALSE),
+    ('https://images.caricos.com/a/audi/2017_audi_a4_us/images/2560x1440/2017_audi_a4_us_1_2560x1440.jpg', 17, 'front view of a silver audi a4', TRUE),
+    ('https://i.ytimg.com/vi/73NZvRFX02M/maxresdefault.jpg', 17, 'side view of a silver audi a4', FALSE),
+    ('https://images.caricos.com/a/audi/2016_audi_a4/images/2560x1440/2016_audi_a4_124_2560x1440.jpg', 17, 'back view of a silver audi a4', FALSE),
 
     -- green subaru forester
     ('image_url', 18, 'alt_text', TRUE),
