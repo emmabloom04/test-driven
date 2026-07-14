@@ -148,9 +148,9 @@ VALUES
     ('https://bidhistory.org/uploads/8Vuie75RA1u4uTNAgpbRGaEMMb/5nplm4agxmh045623-hyundai-elantra-2021-3.jpg', 10, 'back view of a silver hyundai elantra', FALSE),
 
     -- blue kia sportage
-    ('image_url', 11, 'alt_text', TRUE),
-    ('image_url', 11, 'alt_text', FALSE),
-    ('image_url', 11, 'alt_text', FALSE),
+    ('https://www.motoringresearch.com/wp-content/uploads/2020/05/kia-sportage_2018-3-blue-flame_0001.jpg', 11, 'front view of a blue kia sportage', TRUE),
+    ('https://product-detail-www-opennext.snc-prod.aws.cinch.co.uk/_next/image?url=https:%2F%2Feu.cdn.autosonshow.tv%2F6676%2F17710%2FRL19OJT%2F03_md.jpg&w=1080&q=75', 11, 'side view of a blue kia sportage', FALSE),
+    ('https://www.kia.tn/sites/default/files/image360/new_kia_sportage_blue10.jpg', 11, 'back view of a blue kia sportage', FALSE),
 
     -- gray volkswagen jetta
     ('image_url', 12, 'alt_text', TRUE),
