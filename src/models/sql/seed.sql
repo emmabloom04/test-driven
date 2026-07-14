@@ -183,9 +183,9 @@ VALUES
     ('https://images.caricos.com/a/audi/2016_audi_a4/images/2560x1440/2016_audi_a4_124_2560x1440.jpg', 17, 'back view of a silver audi a4', FALSE),
 
     -- green subaru forester
-    ('image_url', 18, 'alt_text', TRUE),
-    ('image_url', 18, 'alt_text', FALSE),
-    ('image_url', 18, 'alt_text', FALSE),
+    ('https://di-uploads-pod46.dealerinspire.com/rairdonsubaruofauburn/uploads/2022/10/2023-subaru-forester-autumn-green-metallic.png', 18, 'front view of a green subaru forester', TRUE),
+    ('https://i.extremetech.com/imagery/content-types/02c4pce3KL3GtuMB5C8pWyp/hero-image.fill.size_1200x675.jpg', 18, 'side view of a green subaru forester', FALSE),
+    ('https://pictures.dealer.com/generic-subaru-OEM_VIN_STOCK_PHOTOS/8c19ee1f1172387ec23ed9afec02e8fa.jpg?impolicy=resize&w=1024', 18, 'back view of a green subaru forester', FALSE),
 
     -- black dodge charger
     ('image_url', 19, 'alt_text', TRUE),
