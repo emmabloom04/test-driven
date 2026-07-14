@@ -163,9 +163,9 @@ VALUES
     ('https://imagecdnblogsa.carbay.com/wp-content/uploads/2025/05/26170700/2026-toyota-rav4-gr-sport-exteri-2.jpg', 13, 'back view of a red toyota rav4', FALSE),
 
     -- white chevrolet equinox
-    ('image_url', 14, 'alt_text', TRUE),
-    ('image_url', 14, 'alt_text', FALSE),
-    ('image_url', 14, 'alt_text', FALSE),
+    ('https://collisiondocsandiego.com/wp-content/uploads/2025/09/chevrolet-equinox-windshield-replaced-san-diego.png', 14, 'front view of a white chevrolet equinox', TRUE),
+    ('http://images.gtcarlot.com/pictures/144376374.jpg', 14, 'side view of a white chevrolet equinox', FALSE),
+    ('https://www.dubicars.com/images/d6d26a/w_1300x760/colombia-used-cars/dc7e8373-c13b-4f57-b982-386f6755de7e.jpeg', 14, 'back view of a white chevrolet equinox', FALSE),
 
     -- black honda cr-v
     ('image_url', 15, 'alt_text', TRUE),
