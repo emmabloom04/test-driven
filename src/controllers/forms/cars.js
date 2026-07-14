@@ -38,7 +38,14 @@ const showCarsForSale = async (req, res) => {
     });
 };
 
-router.get('/', requireLogin, showSellACarForm);
+function formatNumberInput(input) {
+  // Strip out anything that isn't a digit
+  let value = input.value.replace(/\D/g, '');
+  // Add commas
+  input.value = Number(value).toLocaleString('en-US');
+}
+
+router.get('/', requireLogin, showSellACarForm, formatNumberInput);
 
 router.get('/list', showCarsForSale);
 

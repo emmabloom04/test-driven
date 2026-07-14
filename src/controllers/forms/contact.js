@@ -39,8 +39,7 @@ const handleContactSubmission = async (req, res) => {
         // Save to database
         await createContactForm(subject, message);
         req.flash('success', 'Thank you for contacting us! We will respond soon.');
-        // Redirect to responses page on success
-        res.redirect('/contact/responses');
+        res.redirect('/');
     } catch (error) {
         console.error('Error saving contact form:', error);
         req.flash('error', 'Unable to submit your message. Please try again later.');
