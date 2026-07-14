@@ -48,8 +48,7 @@ CREATE TABLE IF NOT EXISTS cars_list (
     sold BOOLEAN NOT NULL DEFAULT FALSE,
     make VARCHAR(255) NOT NULL,
     model VARCHAR(255) NOT NULL,
-    category_id INTEGER,
-    FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE SET NULL,
+    category VARCHAR(255),
     exterior_color VARCHAR(255) NOT NULL,
     interior_color VARCHAR(255) NOT NULL,
     fuel_type VARCHAR(255) NOT NULL,
@@ -61,6 +60,30 @@ CREATE TABLE IF NOT EXISTS cars_list (
     listed_by INTEGER,
     FOREIGN KEY (listed_by) REFERENCES users(id) ON DELETE SET NULL
 );
+
+INSERT INTO cars_list (vin, make, model, category, exterior_color, interior_color, fuel_type, year, mileage, price)
+VALUES
+    ('4T1BF1FK5KU123456', 'Toyota', 'Camry', 'Sedan', 'Silver', 'Black', 'Gasoline', 2019, 423000, 18900),
+    ('2HGFC2F59LH234567', 'Honda', 'Civic', 'Sedan', 'Blue', 'Gray', 'Gasoline', 2020, 31750, 19500),
+    ('1FTFW1E51JKD34578', 'Ford', 'F-150', 'Truck', 'Black', 'Tan', 'Gasoline', 2018, 58200, 27800),
+    ('1G1ZD5ST8HF145689', 'Chevrolet', 'Malibu', 'Sedan', 'White', 'Black', 'Gasoline', 2017, 67100, 12400),
+    ('4S4BSANC5M3256790', 'Subaru', 'Outback', 'Hatchback', 'Green', 'Gray', 'Gasoline', 2021, 22900, 26300),
+    ('1N4BL4BV6KC367801', 'Nissan', 'Altima', 'Sedan', 'Gray', 'Black', 'Gasoline', 2019, 45600, 15700),
+    ('1C4RJFAG3JC478912', 'Jeep', 'Grand Cherokee', 'SUV', 'Red', 'Black', 'Gasoline', 2018, 61300, 21900),
+    ('WBA8E1C51HK589023', 'BMW', '3 Series', 'Sedan', 'Black', 'Tan', 'Gasoline', 2017, 52000, 19200),
+    ('JM3KFBCM8L0690134', 'Mazda', 'CX-5', 'SUV', ' White', 'Black', 'Gasoline', 2020, 28400, 22600),
+    ('5NPD84LF2MH701245', 'Hyundai', 'Elantra', 'Sedan', 'Silver', 'Gray', 'Gasoline', 2021, 19800, 16300),
+    ('KNDPMCAC5K7812356', 'Kia', 'Sportage', 'SUV', 'Blue', 'Black', 'Gasoline', 2019, 39500, 17900),
+    ('3VWC57BU9JM923467', 'Volkswagen', 'Jetta', 'Sedan', 'Gray', 'Black', 'Gasoline', 2018, 49200, 13800),
+    ('2T3RWRFV4LW034578', 'Toyota', 'RAV4', 'SUV', 'Red', 'Black', 'Hybrid', 2020, 33600, 24500),
+    ('2GNAXKEV3K6145689', 'Chevrolet', 'Equinox', 'SUV', 'White', 'Gray', 'Gasoline', 2019, 44000, 17200),
+    ('5J6RW2H85ML256790', 'Honda', 'CR-V', 'SUV', 'Black', 'Black', 'Gasoline', 2021, 25300, 25900),
+    ('1FMCU9GD3JUB67801', 'Ford', 'Escape', 'SUV', 'Blue', 'Gray', 'Gasoline', 2018, 56700, 14600),
+    ('WAUENAF47HN478912', 'Audi', 'A4', 'Sedan', 'Silver', 'Black', 'Gasoline', 2017, 63900, 18400),
+    ('JF2SKAJC1LH589023', 'Subaru', 'Forester', 'SUV', 'Green', 'Tan', 'Gasoline', 2020, 30100, 23700),
+    ('2C3CDXHG3KH690134', 'Dodge', 'Charger', 'Sports Car', 'Black', 'Black', 'Gasoline', 2019, 41800, 20300),
+    ('3MZBPBCM8MM701245', 'Mazda', 'Mazda3', 'Hatchback', 'White', 'Gray', 'Gasoline', 2021, 21200, 17500)
+ON CONFLICT (vin) DO NOTHING;
 
 CREATE TABLE IF NOT EXISTS vehicle_images (
     id SERIAL PRIMARY KEY,
@@ -96,7 +119,7 @@ CREATE TABLE IF NOT EXISTS service_requests (
     user_id INTEGER NOT NULL, 
     FOREIGN KEY (user_id) REFERENCES users(id),
     vehicle_id INTEGER NOT NULL,
-    FOREIGN KEY (vehicle_id) REFERENCES cars_list(id),
+    FOREIGN KEY (vehicle_id) REFERENCES cars_list(id) ON DELETE CASCADE,
     service_description TEXT NOT NULL,
     request_status_id INTEGER NOT NULL DEFAULT 1,
     FOREIGN KEY (request_status_id) REFERENCES service_request_status(id),
@@ -108,8 +131,8 @@ CREATE TABLE IF NOT EXISTS service_request_notes (
     id SERIAL PRIMARY KEY,
     service_request_id INTEGER NOT NULL,
     FOREIGN KEY (service_request_id) REFERENCES service_requests(id),
-    employee_id INTEGER NOT NULL,
-    FOREIGN KEY (employee_id) REFERENCES users(id),
+    employee_id INTEGER,
+    FOREIGN KEY (employee_id) REFERENCES users(id) ON DELETE SET NULL,
     note TEXT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
@@ -118,8 +141,8 @@ CREATE TABLE IF NOT EXISTS reviews (
     id SERIAL PRIMARY KEY,
     user_id INTEGER NOT NULL,
     FOREIGN KEY (user_id) REFERENCES users(id),
-    car_id INTEGER NOT NULL,
-    FOREIGN KEY (car_id) REFERENCES cars_list(id),
+    car_id INTEGER,
+    FOREIGN KEY (car_id) REFERENCES cars_list(id) ON DELETE SET NULL,
     comment TEXT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
