@@ -153,9 +153,9 @@ VALUES
     ('https://www.kia.tn/sites/default/files/image360/new_kia_sportage_blue10.jpg', 11, 'back view of a blue kia sportage', FALSE),
 
     -- gray volkswagen jetta
-    ('image_url', 12, 'alt_text', TRUE),
-    ('image_url', 12, 'alt_text', FALSE),
-    ('image_url', 12, 'alt_text', FALSE),
+    ('https://images.contentstack.io/v3/assets/blt75c85f063ac4ae63/blt547f395537c3d3d6/65f932f606f1968d3e226661/FCP_Euro_Volkswagen_Mk6_Jetta_GLI_Header.jpg', 12, 'front view of a gray volkswagen jetta', TRUE),
+    ('https://s1.cdn.autoevolution.com/images/news/gallery/2019-jetta-gli-show-cool-gray-paint-on-35th-anniversary-edition_13.jpg', 12, 'side view of a gray volkswagen jetta', FALSE),
+    ('https://images.contentstack.io/v3/assets/blt75c85f063ac4ae63/blt6f770c392d3ae4ca/6605c3c379ac3ebba0aec385/FCP_Euro_Buyers_Guide_Volkswagen_Jetta_Mk6_GLI.jpg', 12, 'back view of a gray volkswagen jetta', FALSE),
 
     -- red toyota rav4
     ('image_url', 13, 'alt_text', TRUE),
