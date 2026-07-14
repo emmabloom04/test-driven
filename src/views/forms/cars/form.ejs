@@ -75,6 +75,34 @@
             />
         </div>
 
+        <div class="form-group">
+            <label for="fuelType">Fuel Type</label>
+            <input 
+            type="text"
+            id="fuelType"
+            name="fuelType"
+            maxlength="20"
+            placeholder="Fuel Type"
+            required
+            />
+        </div>
+
+        <div class="form-group">
+            <label for="year">Year</label>
+            <input 
+            type="text"
+            id="year"
+            name="year"
+            minlength="4"
+            maxlength="4"
+            min="1980"
+            max="<%= currentYear %>"
+            placeholder="YYYY"
+            pattern="^[0-9]+$"
+            required
+            >
+        </div>
+
         <button type="submit"></button>
     </form>
 </main>
