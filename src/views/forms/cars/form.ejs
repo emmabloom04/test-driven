@@ -2,5 +2,22 @@
 <main>
     <h1>Sell A Car</h1>
     <p>Our team is still working on developing this page.</p>
+    <form method="POST" action="/cars" class="sell-a-car-form">
+        <div class="form-group">
+            <label for="vin">Vin Number</label>
+            <input 
+            type="text"
+            id="vin"
+            name="vin"
+            minlength="17"
+            maxlength="17"
+            size="17"
+            placeholder="Vin Number"
+            required
+            />
+        </div>
+
+        <button type="submit"></button>
+    </form>
 </main>
 <%- include('../../partials/footer') %>
