@@ -103,9 +103,9 @@ VALUES
     ('http://images.gtcarlot.com/pictures/130357764.jpg', 1, 'back view of silver toyota camry', FALSE),
 
     -- blue honda civic
-    ('image_url', 2, 'alt_text', TRUE),
-    ('image_url', 2, 'alt_text', FALSE),
-    ('image_url', 2, 'alt_text', FALSE),
+    ('https://www.usnews.com/object/image/0000018b-ac16-d133-a3ff-bddee3010000/https-cars-dms-usnews-com-static-uploads-images-auto-custom-14219-original-2020-honda-civic-18.jpg?update-time=1568743572000&size=responsiveGallery', 2, 'front view of blue honda civic', TRUE),
+    ('https://s3.amazonaws.com/di-honda-enrollment/2020-civic-si-coupe/model-image-2020-civic-si-coupe-front.png', 2, 'side view of blue honda civic', FALSE),
+    ('https://newengland.hondadealers.com/-/media/Honda-Automobiles/Vehicles/2019/Civic-Sedan/00-NEW-VLP/Exterior/1-Styling/MY19-CIVIC-SEDAN-transfer-EXTERIOR-Styling-06-Sport-1400-2x.jpg', 2, 'back view of blue honda civic', FALSE),
 
     -- black ford f-150
     ('image_url', 3, 'alt_text', TRUE),
