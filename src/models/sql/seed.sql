@@ -118,9 +118,9 @@ VALUES
     ('https://platform.cstatic-images.com/in/v2/stock_photos/dab8048a-8834-4cdc-ac48-32a095e9c741/41b125db-22ad-429c-9662-fd60ee642965.png', 4, 'back view of white chevrolet malibu', FALSE),
 
     -- green subaru outback
-    ('image_url', 5, 'alt_text', TRUE),
-    ('image_url', 5, 'alt_text', FALSE),
-    ('image_url', 5, 'alt_text', FALSE),
+    ('https://s1.cdn.autoevolution.com/images/news/forget-about-wilderness-even-the-base-2021-subaru-outback-is-costlier-in-uk-160774_1.jpg', 5, 'front view of green subaru outback', TRUE),
+    ('https://i2.wp.com/subarucarusa.com/wp-content/uploads/2019/09/2021-Subaru-Outback-Touring-Price-Colors.jpg?ssl=1', 5, 'side view of green subaru outback', FALSE),
+    ('https://cdn.jdpower.com/JDPA_2022%20Subaru%20Outback%20Wilderness%20Green%20Rear%20Quarter%20View.jpg', 5, 'back view of green subaru outback', FALSE),
 
     -- gray nissan altima
     ('image_url', 6, 'alt_text', TRUE),
