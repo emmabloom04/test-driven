@@ -25,4 +25,13 @@ const getAllCars = async () => {
     return result.rows;
 };
 
-export { createSellACarForm, getAllCars };
+const getAllVehicleImages = async () => {
+    const query = `
+        SELECT id, image_url, vehicle_id, alt_text, is_primary
+        FROM vehicle_images
+    `;
+    const result = await db.query(query);
+    return result.rows;
+}
+
+export { createSellACarForm, getAllCars, getAllVehicleImages };
