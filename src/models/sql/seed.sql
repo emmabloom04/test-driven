@@ -195,7 +195,7 @@ VALUES
     -- white mazda mazda3
     ('https://images.squarespace-cdn.com/content/v1/5b2437bcc3c16a6fea91cd4d/1696368503048-U85V4ZWQL6ADD153BYPE/2023-09-19+14.00.27.jpg', 20, 'front view of a white mazda mazda3', TRUE),
     ('http://images.gtcarlot.com/pictures/141453532.jpg', 20, 'side view of a white mazda mazda3', FALSE),
-    ('https://images.carexpert.com.au/resize/3000/-/app/uploads/2021/06/2021-Mazda-3-G25-Astina-Hatch-13.jpg', 20, 'back view of a white mazda mazda3', FALSE)
+    ('https://images.carexpert.com.au/resize/3000/-/app/uploads/2021/06/2021-Mazda-3-G25-Astina-Hatch-13.jpg', 20, 'back view of a white mazda mazda3', FALSE);
 
 CREATE TABLE IF NOT EXISTS contact_form (
     id SERIAL PRIMARY KEY,
