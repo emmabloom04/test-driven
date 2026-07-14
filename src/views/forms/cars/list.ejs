@@ -7,6 +7,11 @@
             <% carsList.forEach(car => { %>
                 <div>
                     <h3><%= car.year %> <%= car.make %> <%= car.model %></h3>
+                    <p>Exterior: <%= car.exterior_color %></p>
+                    <p>Interior: <%= car.interior_color %></p>
+                    <p><%= car.fuel_type %></p>
+                    <p><%= car.mileage %> mi</p>
+                    <p>$<%= car.price %></p>
                 </div>
             <% }); %>
         </div>
