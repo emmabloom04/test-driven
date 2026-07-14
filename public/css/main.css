@@ -25,11 +25,14 @@ body {
     }
 
     a {
+      display: inline-block;
       color: var(--body-font-color);
       text-decoration: none;
       font-weight: bold;
+      transition: transform 0.2s ease, color 0.2s ease;
     }
     a:hover {
+      transform: translateY(-3px);
       color: var(--secondary-color);
     }
   }
