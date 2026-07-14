@@ -143,9 +143,9 @@ VALUES
     ('https://autoimage.capitalone.com/stock-media/chrome/2025-Mazda-CX-5-2.5_S_Preferred_Package-51K-cc_2025MAS060010_02_2100_51K.png?width=640&height=480', 9, 'back view of a white mazda cx-5', FALSE),
 
     -- silver hyundai elantra
-    ('image_url', 10, 'alt_text', TRUE),
-    ('image_url', 10, 'alt_text', FALSE),
-    ('image_url', 10, 'alt_text', FALSE),
+    ('https://blog.consumerguide.com/wp-content/uploads/sites/2/2021/04/20210301_161359.jpg', 10, 'front view of a silver hyundai elantra', TRUE),
+    ('https://www.earnhardthyundai.com/blogs/4378/wp-content/uploads/2020/09/2021-Hyundai_elantra-Exterior_o.png', 10, 'side view of a silver hyundai elantra', FALSE),
+    ('https://bidhistory.org/uploads/8Vuie75RA1u4uTNAgpbRGaEMMb/5nplm4agxmh045623-hyundai-elantra-2021-3.jpg', 10, 'back view of a silver hyundai elantra', FALSE),
 
     -- blue kia sportage
     ('image_url', 11, 'alt_text', TRUE),
