@@ -188,9 +188,9 @@ VALUES
     ('https://pictures.dealer.com/generic-subaru-OEM_VIN_STOCK_PHOTOS/8c19ee1f1172387ec23ed9afec02e8fa.jpg?impolicy=resize&w=1024', 18, 'back view of a green subaru forester', FALSE),
 
     -- black dodge charger
-    ('image_url', 19, 'alt_text', TRUE),
-    ('image_url', 19, 'alt_text', FALSE),
-    ('image_url', 19, 'alt_text', FALSE),
+    ('https://images.hgmsites.net/hug/dodge-charger_100702954_h.jpg', 19, 'front view of a black dodge charger', TRUE),
+    ('https://images.fitmentindustries.com/web-compressed/2223220-2-2019-charger-dodge-scat-pack-392-hr-lowering-springs-factory-reproductions-fr77-gloss-black.jpg', 19, 'side view of a black dodge charger', FALSE),
+    ('https://img.autobytel.com/chrome/colormatched_02/white/640/cc_2019doc20_02_640/cc_2019doc200016_02_640_px8.jpg', 19, 'back view of a black dodge charger', FALSE),
 
     -- white mazda mazda3
     ('image_url', 20, 'alt_text', TRUE),
