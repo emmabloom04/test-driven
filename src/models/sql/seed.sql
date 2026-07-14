@@ -168,9 +168,9 @@ VALUES
     ('https://www.dubicars.com/images/d6d26a/w_1300x760/colombia-used-cars/dc7e8373-c13b-4f57-b982-386f6755de7e.jpeg', 14, 'back view of a white chevrolet equinox', FALSE),
 
     -- black honda cr-v
-    ('image_url', 15, 'alt_text', TRUE),
-    ('image_url', 15, 'alt_text', FALSE),
-    ('image_url', 15, 'alt_text', FALSE),
+    ('https://platform.cstatic-images.com/xlarge/in/v2/stock_photos/cf9cbffb-b47e-4295-8120-3d24be9f97d5/397391d4-1d3b-4a08-b065-9fc20ea6804c.png', 15, 'front view of a black honda cr-v', TRUE),
+    ('https://media.drive.com.au/obj/tx_q:50,rs:auto:1920:1080:1/driveau/upload/cms/uploads/zegqbqlxnfhocl7cwbwj', 15, 'side view of a black honda cr-v', FALSE),
+    ('https://cfwww.hgregoire.com/photos/by-size/615517/3648x2048/6906602.JPG', 15, 'back view of a black honda cr-v', FALSE),
 
     -- blue ford escape
     ('image_url', 16, 'alt_text', TRUE),
