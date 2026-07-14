@@ -138,9 +138,9 @@ VALUES
     ('https://prod.pictures.autoscout24.net/listing-images/134031cd-6a56-4d7d-97a6-838c34098703_6c58c360-28c5-4839-b7e1-8c7e27c647a5.jpg/1920x1080.webp', 8, 'back view of a black bmw 3 series', FALSE),
 
     -- white mazda cx-5
-    ('image_url', 9, 'alt_text', TRUE),
-    ('image_url', 9, 'alt_text', FALSE),
-    ('image_url', 9, 'alt_text', FALSE),
+    ('https://i.ytimg.com/vi/NbsNO7Tyk24/maxresdefault.jpg', 9, 'front view of a white mazda cx-5', TRUE),
+    ('http://images.gtcarlot.com/pictures/146669509.jpg', 9, 'side view of a white mazda cx-5', FALSE),
+    ('https://autoimage.capitalone.com/stock-media/chrome/2025-Mazda-CX-5-2.5_S_Preferred_Package-51K-cc_2025MAS060010_02_2100_51K.png?width=640&height=480', 9, 'back view of a white mazda cx-5', FALSE),
 
     -- silver hyundai elantra
     ('image_url', 10, 'alt_text', TRUE),
