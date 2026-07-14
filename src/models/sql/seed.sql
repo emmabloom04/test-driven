@@ -1,3 +1,4 @@
+BEGIN;
 
 CREATE TABLE IF NOT EXISTS categories (
     id SERIAL PRIMARY KEY,
@@ -94,6 +95,108 @@ CREATE TABLE IF NOT EXISTS vehicle_images (
     is_primary BOOLEAN DEFAULT FALSE
 );
 
+INSERT INTO vehicle_images (image_url, vehicle_id, alt_text, is_primary)
+VALUES
+    -- silver toyota camry
+    ('image_url', 1, 'alt_text', TRUE),
+    ('image_url', 1, 'alt_text', FALSE),
+    ('image_url', 1, 'alt_text', FALSE),
+
+    -- blue honda civic
+    ('image_url', 2, 'alt_text', TRUE),
+    ('image_url', 2, 'alt_text', FALSE),
+    ('image_url', 2, 'alt_text', FALSE),
+
+    -- black ford f-150
+    ('image_url', 3, 'alt_text', TRUE),
+    ('image_url', 3, 'alt_text', FALSE),
+    ('image_url', 3, 'alt_text', FALSE),
+
+    -- white chevrolet malibu
+    ('image_url', 4, 'alt_text', TRUE),
+    ('image_url', 4, 'alt_text', FALSE),
+    ('image_url', 4, 'alt_text', FALSE),
+
+    -- green subaru outback
+    ('image_url', 5, 'alt_text', TRUE),
+    ('image_url', 5, 'alt_text', FALSE),
+    ('image_url', 5, 'alt_text', FALSE),
+
+    -- gray nissan altima
+    ('image_url', 6, 'alt_text', TRUE),
+    ('image_url', 6, 'alt_text', FALSE),
+    ('image_url', 6, 'alt_text', FALSE),
+
+    -- red jeep grand cherokee
+    ('image_url', 7, 'alt_text', TRUE),
+    ('image_url', 7, 'alt_text', FALSE),
+    ('image_url', 7, 'alt_text', FALSE),
+
+    -- black bmw 3 series
+    ('image_url', 8, 'alt_text', TRUE),
+    ('image_url', 8, 'alt_text', FALSE),
+    ('image_url', 8, 'alt_text', FALSE),
+
+    -- white mazda cx-5
+    ('image_url', 9, 'alt_text', TRUE),
+    ('image_url', 9, 'alt_text', FALSE),
+    ('image_url', 9, 'alt_text', FALSE),
+
+    -- silver hyundai elantra
+    ('image_url', 10, 'alt_text', TRUE),
+    ('image_url', 10, 'alt_text', FALSE),
+    ('image_url', 10, 'alt_text', FALSE),
+
+    -- blue kia sportage
+    ('image_url', 11, 'alt_text', TRUE),
+    ('image_url', 11, 'alt_text', FALSE),
+    ('image_url', 11, 'alt_text', FALSE),
+
+    -- gray volkswagen jetta
+    ('image_url', 12, 'alt_text', TRUE),
+    ('image_url', 12, 'alt_text', FALSE),
+    ('image_url', 12, 'alt_text', FALSE),
+
+    -- red toyota rav4
+    ('image_url', 13, 'alt_text', TRUE),
+    ('image_url', 13, 'alt_text', FALSE),
+    ('image_url', 13, 'alt_text', FALSE),
+
+    -- white chevrolet equinox
+    ('image_url', 14, 'alt_text', TRUE),
+    ('image_url', 14, 'alt_text', FALSE),
+    ('image_url', 14, 'alt_text', FALSE),
+
+    -- black honda cr-v
+    ('image_url', 15, 'alt_text', TRUE),
+    ('image_url', 15, 'alt_text', FALSE),
+    ('image_url', 15, 'alt_text', FALSE),
+
+    -- blue ford escape
+    ('image_url', 16, 'alt_text', TRUE),
+    ('image_url', 16, 'alt_text', FALSE),
+    ('image_url', 16, 'alt_text', FALSE),
+
+    -- silver audi a4
+    ('image_url', 17, 'alt_text', TRUE),
+    ('image_url', 17, 'alt_text', FALSE),
+    ('image_url', 17, 'alt_text', FALSE),
+
+    -- green subaru forester
+    ('image_url', 18, 'alt_text', TRUE),
+    ('image_url', 18, 'alt_text', FALSE),
+    ('image_url', 18, 'alt_text', FALSE),
+
+    -- black dodge charger
+    ('image_url', 19, 'alt_text', TRUE),
+    ('image_url', 19, 'alt_text', FALSE),
+    ('image_url', 19, 'alt_text', FALSE),
+
+    -- white mazda mazda3
+    ('image_url', 20, 'alt_text', TRUE),
+    ('image_url', 20, 'alt_text', FALSE),
+    ('image_url', 20, 'alt_text', FALSE)
+
 CREATE TABLE IF NOT EXISTS contact_form (
     id SERIAL PRIMARY KEY,
     subject VARCHAR(255) NOT NULL,
@@ -147,3 +250,5 @@ CREATE TABLE IF NOT EXISTS reviews (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+COMMIT;
