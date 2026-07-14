@@ -113,9 +113,9 @@ VALUES
     ('https://i.pinimg.com/originals/f6/25/43/f62543e6a4cd5da35ef99acb70c52433.jpg', 3, 'back view of black ford f-150', FALSE),
 
     -- white chevrolet malibu
-    ('image_url', 4, 'alt_text', TRUE),
-    ('image_url', 4, 'alt_text', FALSE),
-    ('image_url', 4, 'alt_text', FALSE),
+    ('https://di-uploads-pod10.dealerinspire.com/chevycenter/uploads/2020/07/2017-Chevrolet-Malibu-PREMIER-Summit-White.jpg', 4, 'front view of white chevrolet malibu', TRUE),
+    ('http://images.gtcarlot.com/pictures/115902550.jpg', 4, 'side view of white chevrolet malibu', FALSE),
+    ('https://platform.cstatic-images.com/in/v2/stock_photos/dab8048a-8834-4cdc-ac48-32a095e9c741/41b125db-22ad-429c-9662-fd60ee642965.png', 4, 'back view of white chevrolet malibu', FALSE),
 
     -- green subaru outback
     ('image_url', 5, 'alt_text', TRUE),
