@@ -1,6 +1,9 @@
 import { Router } from 'express';
 import { requireLogin } from '../../middleware/auth.js';
 import { createSellACarForm, getAllCars, getAllVehicleImages } from '../../models/forms/cars.js';
+import multer from 'multer';
+import path from 'path';
+import { randomUUID } from 'crypto';
 
 const router = Router();
 
@@ -12,6 +15,49 @@ const showSellACarForm = (req, res) => {
         title: 'Sell A Car'
     });
 };
+
+const uploadsDir = path.join(process.cwd(), 'public', 'uploads');
+
+const upload = multer({
+  storage: multer.diskStorage({
+    destination: uploadsDir,
+    filename: (req, file, cb) => {
+      const extension = path.extname(file.originalname).toLowerCase();
+      cb(null, `${Date.now()}-${randomUUID()}${extension}`);
+    }
+  }),
+  limits: {
+    files: 8,
+    fileSize: 5 * 1024 * 1024
+  }
+});
+
+const processSellACarForm = async (req, res) => {
+    // Check for validation errors
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+        // Store each validation error as a separate flash message
+        errors.array().forEach(error => {
+            req.flash('error', error.msg);
+        });
+        return res.redirect('/cars');
+    }
+
+    // Extract validated data
+    const { vin, make, model, category, exteriorColor, interiorColor, fuelType, year, mileage, price } = req.body;
+
+    try {
+        // Save to database
+        await createSellACarForm(vin, make, model, category, exteriorColor, interiorColor, fuelType, year, mileage, price);
+        req.flash('success', 'Your car has been listed!');
+        res.redirect('/cars/list');
+    } catch (error) {
+        console.error('Error listing car:', error);
+        req.flash('error', 'Unable to list your car. Please try again later.');
+        res.redirect('/cars');
+    }
+}
 
 /**
  * Display all cars for sale.
@@ -48,5 +94,6 @@ function formatNumberInput(input) {
 router.get('/', requireLogin, showSellACarForm, formatNumberInput);
 
 router.get('/list', showCarsForSale);
+router.post('/', requireLogin, upload.array('carImages', 8), processSellACarForm);
 
 export default router;

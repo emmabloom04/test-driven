@@ -3,7 +3,7 @@ import db from '../db.js';
 
 const createSellACarForm = async (vin, make, model, category, exterior_color, interior_color, fuel_type, year, mileage, price) => {
     const query = `
-        INSERT INTO contact_form (vin, make, model, category, exterior_color, interior_color, fuel_type, year, mileage, price)
+        INSERT INTO cars_list (vin, make, model, category, exterior_color, interior_color, fuel_type, year, mileage, price)
         VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
         RETURNING *
     `;
