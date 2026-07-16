@@ -2,7 +2,7 @@
 <main>
     <h1>Sell A Car</h1>
     <p>Our team is still working on developing this page.</p>
-    <form method="POST" action="/cars" class="sell-a-car-form">
+    <form method="POST" action="/cars" enctype="multipart/form-data" class="sell-a-car-form">
         <div class="form-group">
             <label for="vin">Vin Number</label>
             <input 
@@ -100,11 +100,11 @@
             placeholder="YYYY"
             pattern="^[0-9]+$"
             required
-            >
+            />
         </div>
 
         <div class="form-group">
-            <label for="Mileage">Mileage</label>
+            <label for="mileage">Mileage</label>
             <input 
             oninput="formatNumberInput(this)"
             type="text"
@@ -114,11 +114,11 @@
             placeholder="Mileage"
             pattern="^[0-9]+$"
             required
-            >
+            />
         </div>
 
         <div class="form-group">
-            <label for="Price">Price</label>
+            <label for="price">Price</label>
             <input 
             oninput="formatNumberInput(this)"
             type="text"
@@ -128,7 +128,18 @@
             placeholder="$$$$"
             pattern="^[0-9]+$"
             required
-            >
+            />
+        </div>
+
+        <div class="form-group">
+            <label for="carImages">Photos</label>
+            <input type="file"
+            id="carImages"
+            name="carImages"
+            accept="image/png, image/jpeg, image/webp, image/gif"
+            multiple
+            required
+            />
         </div>
 
         <button type="submit">List Car</button>
