@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { requireLogin } from '../../middleware/auth.js';
-import { createSellACarForm, getAllCars, getAllVehicleImages } from '../../models/forms/cars.js';
+import { createSellACarForm, getAllCars, getAllVehicleImages, insertVehicleImage } from '../../models/forms/cars.js';
 import multer from 'multer';
 import path from 'path';
 import { randomUUID } from 'crypto';
@@ -33,29 +33,46 @@ const upload = multer({
 });
 
 const processSellACarForm = async (req, res) => {
-    // Check for validation errors
-    const errors = validationResult(req);
-
-    if (!errors.isEmpty()) {
-        // Store each validation error as a separate flash message
-        errors.array().forEach(error => {
-            req.flash('error', error.msg);
-        });
-        return res.redirect('/cars');
-    }
 
     // Extract validated data
     const { vin, make, model, category, exteriorColor, interiorColor, fuelType, year, mileage, price } = req.body;
 
+    const uploadedFiles = req.files || [];
+    if (!uploadedFiles.length) {
+        req.flash('error', 'Please upload at least one car photo.');
+        return res.redirect('/cars');
+    }
+
     try {
-        // Save to database
-        await createSellACarForm(vin, make, model, category, exteriorColor, interiorColor, fuelType, year, mileage, price);
-        req.flash('success', 'Your car has been listed!');
-        res.redirect('/cars/list');
+        const newCar = await createSellACarForm(
+            vin,
+            make,
+            model,
+            category,
+            exteriorColor,
+            interiorColor,
+            fuelType,
+            Number(year),
+            Number(mileage.replace(/,/g, '')),
+            Number(price.replace(/,/g, '')),
+            req.session?.user?.id || null
+        );
+
+        for (const [index, file] of uploadedFiles.entries()) {
+            await insertVehicleImage(
+                newCar.id,
+                `/uploads/${file.filename}`,
+                `${make} ${model} photo ${index + 1}`,
+                index === 0
+            );
+        }
+
+        req.flash('success', 'Your car listing has been posted successfully.');
+        return res.redirect('/cars/list');
     } catch (error) {
-        console.error('Error listing car:', error);
-        req.flash('error', 'Unable to list your car. Please try again later.');
-        res.redirect('/cars');
+        console.error('Error processing car listing:', error);
+        req.flash('error', 'There was an error listing the car. Please try again.');
+        return res.redirect('/cars');
     }
 }
 

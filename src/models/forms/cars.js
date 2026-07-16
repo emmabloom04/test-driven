@@ -11,6 +11,17 @@ const createSellACarForm = async (vin, make, model, category, exterior_color, in
     return result.rows[0];
 };
 
+const insertVehicleImage = async (vehicleId, imageUrl, altText = '', isPrimary = false) => {
+    const query = `
+        INSERT INTO vehicle_images (image_url, vehicle_id, alt_text, is_primary)
+        VALUES ($1, $2, $3, $4)
+        RETURNING *
+    `;
+
+    const result = await db.query(query, [imageUrl, vehicleId, altText, isPrimary]);
+    return result.rows[0];
+};
+
 /**
  * Retrieves all cars in the database.
  * 
@@ -34,4 +45,4 @@ const getAllVehicleImages = async () => {
     return result.rows;
 }
 
-export { createSellACarForm, getAllCars, getAllVehicleImages };
+export { createSellACarForm, insertVehicleImage, getAllCars, getAllVehicleImages };
