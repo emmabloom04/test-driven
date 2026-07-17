@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { requireLogin } from '../../middleware/auth.js';
-import { createSellACarForm, getAllCars, getAllVehicleImages, insertVehicleImage } from '../../models/forms/cars.js';
+import { createSellACarForm, getAllCars, getAllVehicleImages, insertVehicleImage, getCarById, getVehicleImagesByCarId } from '../../models/forms/cars.js';
 import multer from 'multer';
 import path from 'path';
 import { randomUUID } from 'crypto';
@@ -103,6 +103,22 @@ const showCarsForSale = async (req, res) => {
 
 const carDetailPage = async(req, res, next) => {
     const carId = Number(req.params.id);
+
+    const car = await getCarById(carId);
+
+    if (!car) {
+        const err = new error(`Car ${carId} not found`);
+        err.status = 404;
+        return next(err);
+    }
+
+    const images = await getVehicleImagesByCarId(carId);
+
+    res.render('forms/cars/detail', {
+        title: `${car.year} ${car.make} ${car.model}`,
+        car,
+        images
+    })
 }
 
 function formatNumberInput(input) {
@@ -115,6 +131,7 @@ function formatNumberInput(input) {
 router.get('/', requireLogin, showSellACarForm, formatNumberInput);
 
 router.get('/list', showCarsForSale);
+router.get('/:id', carDetailPage);
 router.post('/', requireLogin, upload.array('carImages', 8), processSellACarForm);
 
 export default router;
