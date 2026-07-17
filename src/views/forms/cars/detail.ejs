@@ -1,6 +1,13 @@
 <%- include('../../partials/header') %>
 <main>
     <h1><%= title %></h1>
+    <% if (images && images.length > 0) { %>
+        <% images.forEach(image => { %> 
+            <div class="car-img">
+                <img src="<%= image.image_url %>" alt="<%= image.alt_text %>">
+            </div>
+        <% }); %>
+    <% } %>
     <div class="car-info">
         <h3><%= car.year %> <%= car.make %> <%= car.model %></h3>
         <% if (!car.sold) { %>
@@ -13,13 +20,6 @@
         <p><%= car.category %></p>
         <p>VIN: <%= car.vin %></p>
     </div>
-    <% if (images && images.length > 0) { %>
-        <% images.forEach(image => { %> 
-            <div class="car-img">
-                <img src="<%= image.image_url %>" alt="<%= image.alt_text %>">
-            </div>
-        <% }); %>
-    <% } %>
     <a href="/cars/list">Back to all cars</a>
 </main>
 <%- include('../../partials/footer') %>
