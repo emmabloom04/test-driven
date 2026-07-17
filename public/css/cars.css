@@ -35,8 +35,15 @@
     }
 }
 
+.car-detail-grid {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 1rem;
+    margin: 4rem 0;
+}
+
 .car-detail-images {
-    max-width: 1000px;
+    max-width: 750px;
     position: relative;
     margin: auto;
     img {
