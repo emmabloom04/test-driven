@@ -46,13 +46,14 @@
     </div>
 
     <div class="form-group">
+      <% if (categoriesList && categoriesList.length > 0) { %>
       <label for="category">Category</label>
       <select name="category" id="category">
-        <!-- we'll build it so that it pulls from categories table rather than being hard coded -->
-        <option value="Sedan">Sedan</option>
-        <option value="SUV">SUV</option>
-        <option value="Minivan">Minivan</option>
+        <% categoriesList.forEach(category => { %>
+          <option value="<%= category.name %>"><%= category.name %></option>
+        <% }) %>
       </select>
+      <% } %>
     </div>
 
     <div class="form-group">

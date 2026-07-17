@@ -18,7 +18,7 @@ const router = Router();
 /**
  * Display the sell a car form page.
  */
-const showSellACarForm = (req, res) => {
+const showSellACarForm = async (req, res) => {
     let categoriesList = [];
     try {
         categoriesList = await getAllCategories();
