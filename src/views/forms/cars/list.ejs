@@ -4,30 +4,32 @@
     <% if (carsList && carsList.length > 0) { %>
         <div class="all-cars">
             <% carsList.forEach(car => { %>
-                <div class="single-car">
-                    <div class="car-info">
-                        <h3><%= car.year %> <%= car.make %> <%= car.model %></h3>
-                        <% if (!car.sold) { %>
-                            <p class="available">AVAILABLE</p>
-                        <% } else { %>
-                            <p class="sold">SOLD</p>
+                <a class="car-detail-link" href="#">
+                    <div class="single-car">
+                        <div class="car-info">
+                            <h3><%= car.year %> <%= car.make %> <%= car.model %></h3>
+                            <% if (!car.sold) { %>
+                                <p class="available">AVAILABLE</p>
+                            <% } else { %>
+                                <p class="sold">SOLD</p>
+                            <% } %>
+                            <p>Exterior: <%= car.exterior_color %> | Interior: <%= car.interior_color %></p>
+                            <p><%= car.fuel_type %> | <%= car.mileage %> mi | $<%= car.price %></p>
+                        </div>
+                        <% if (imagesList && imagesList.length > 0) { %>
+                            <% imagesList.forEach(image => { %> 
+                                <% if (image.vehicle_id == car.id) { %>
+                                    <% if (image.is_primary) { %>
+                                        <div class="car-img">
+                                            <img src="<%= image.image_url %>" alt="<%= image.alt_text %>">
+                                            <p><%= car.category %></p>
+                                        </div>
+                                    <% } %>
+                                <% } %> 
+                            <% }); %>
                         <% } %>
-                        <p>Exterior: <%= car.exterior_color %> | Interior: <%= car.interior_color %></p>
-                        <p><%= car.fuel_type %> | <%= car.mileage %> mi | $<%= car.price %></p>
                     </div>
-                    <% if (imagesList && imagesList.length > 0) { %>
-                        <% imagesList.forEach(image => { %> 
-                            <% if (image.vehicle_id == car.id) { %>
-                                <% if (image.is_primary) { %>
-                                    <div class="car-img">
-                                        <img src="<%= image.image_url %>" alt="<%= image.alt_text %>">
-                                        <p><%= car.category %></p>
-                                    </div>
-                                <% } %>
-                            <% } %> 
-                        <% }); %>
-                    <% } %>
-                </div>
+                </a>
             <% }); %>
         </div>
     <% } else { %>
