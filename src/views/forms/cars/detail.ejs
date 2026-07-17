@@ -11,6 +11,7 @@
         <p>Exterior: <%= car.exterior_color %> | Interior: <%= car.interior_color %></p>
         <p><%= car.fuel_type %> | <%= car.mileage %> mi | $<%= car.price %></p>
         <p><%= car.category %></p>
+        <p>VIN: <%= car.vin %></p>
     </div>
     <% if (images && images.length > 0) { %>
         <% images.forEach(image => { %> 
