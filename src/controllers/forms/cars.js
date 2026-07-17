@@ -1,6 +1,13 @@
 import { Router } from 'express';
 import { requireLogin } from '../../middleware/auth.js';
-import { createSellACarForm, getAllCars, getAllVehicleImages, insertVehicleImage, getCarById, getVehicleImagesByCarId } from '../../models/forms/cars.js';
+import {
+    createSellACarForm,
+    getAllCars,
+    getAllVehicleImages,
+    getCarById,
+    getVehicleImagesByCarId,
+    insertVehicleImage
+} from '../../models/forms/cars.js';
 import multer from 'multer';
 import path from 'path';
 import { randomUUID } from 'crypto';
@@ -101,25 +108,30 @@ const showCarsForSale = async (req, res) => {
     });
 };
 
-const carDetailPage = async(req, res, next) => {
+const carDetailPage = async (req, res, next) => {
     const carId = Number(req.params.id);
 
-    const car = await getCarById(carId);
+    try {
+        const car = await getCarById(carId);
 
-    if (!car) {
-        const err = new error(`Car ${carId} not found`);
-        err.status = 404;
-        return next(err);
+        if (!car) {
+            const err = new Error(`Car ${carId} not found`);
+            err.status = 404;
+            return next(err);
+        }
+
+        const images = await getVehicleImagesByCarId(carId);
+
+        return res.render('forms/cars/detail', {
+            title: `${car.year} ${car.make} ${car.model}`,
+            car,
+            images
+        });
+    } catch (error) {
+        console.error('Error retrieving car detail:', error);
+        return next(error);
     }
-
-    const images = await getVehicleImagesByCarId(carId);
-
-    res.render('forms/cars/detail', {
-        title: `${car.year} ${car.make} ${car.model}`,
-        car,
-        images
-    })
-}
+};
 
 function formatNumberInput(input) {
   // Strip out anything that isn't a digit
