@@ -5,6 +5,7 @@ import {
     getAllCars,
     getAllVehicleImages,
     getCarById,
+    getAllCategories,
     getVehicleImagesByCarId,
     insertVehicleImage
 } from '../../models/forms/cars.js';
@@ -18,8 +19,16 @@ const router = Router();
  * Display the sell a car form page.
  */
 const showSellACarForm = (req, res) => {
+    let categoriesList = [];
+    try {
+        categoriesList = await getAllCategories();
+    } catch(error) {
+        console.error('Error retrieving categories:', error);
+    }
+
     res.render('forms/cars/form', {
-        title: 'Sell A Car'
+        title: 'Sell A Car',
+        categoriesList
     });
 };
 
