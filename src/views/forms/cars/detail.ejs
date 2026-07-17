@@ -1,14 +1,16 @@
 <%- include('../../partials/header') %>
 <main>
     <h1><%= title %></h1>
-    <% if (images && images.length > 0) { %>
-        <% images.forEach(image => { %> 
-            <div class="car-img">
-                <img src="<%= image.image_url %>" alt="<%= image.alt_text %>">
-            </div>
-        <% }); %>
-    <% } %>
-    <div class="car-info">
+    <div class="car-detail-images">
+        <% if (images && images.length > 0) { %>
+            <% images.forEach(image => { %> 
+                <div class="car-img">
+                    <img src="<%= image.image_url %>" alt="<%= image.alt_text %>">
+                </div>
+            <% }); %>
+        <% } %>
+    </div>
+    <div class="car-detail-info">
         <h3><%= car.year %> <%= car.make %> <%= car.model %></h3>
         <% if (!car.sold) { %>
             <p class="available">AVAILABLE</p>
