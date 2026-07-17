@@ -109,6 +109,7 @@ export {
   createSellACarForm,
   insertVehicleImage,
   getAllCars,
+  getAllCategories,
   getAllVehicleImages,
   getCarById,
   getVehicleImagesByCarId,
