@@ -34,3 +34,9 @@
         color: var(--body-font-color);
     }
 }
+
+.car-detail-images {
+    img {
+        width: 100%;
+    }
+}
