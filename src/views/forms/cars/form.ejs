@@ -1,6 +1,154 @@
 <%- include('../../partials/header') %>
 <main>
-    <h1>Sell A Car</h1>
-    <p>Our team is still working on developing this page.</p>
+  <h1>Sell A Car</h1>
+  <form
+    method="POST"
+    action="/cars"
+    enctype="multipart/form-data"
+    class="sell-a-car-form"
+  >
+    <div class="form-group">
+      <label for="vin">Vin Number</label>
+      <input
+        type="text"
+        id="vin"
+        name="vin"
+        minlength="17"
+        maxlength="17"
+        size="17"
+        placeholder="Vin Number"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="make">Make</label>
+      <input
+        type="text"
+        id="make"
+        name="make"
+        maxlength="20"
+        placeholder="Make"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="model">Model</label>
+      <input
+        type="text"
+        id="model"
+        name="model"
+        maxlength="20"
+        placeholder="Make"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <% if (categoriesList && categoriesList.length > 0) { %>
+      <label for="category">Category</label>
+      <select name="category" id="category">
+        <% categoriesList.forEach(category => { %>
+          <option value="<%= category.name %>"><%= category.name %></option>
+        <% }) %>
+      </select>
+      <% } %>
+    </div>
+
+    <div class="form-group">
+      <label for="exteriorColor">Exterior Color</label>
+      <input
+        type="text"
+        id="exteriorColor"
+        name="exteriorColor"
+        maxlength="20"
+        placeholder="Exterior Color"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="interiorColor">Interior Color</label>
+      <input
+        type="text"
+        id="interiorColor"
+        name="interiorColor"
+        maxlength="20"
+        placeholder="Interior Color"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="fuelType">Fuel Type</label>
+      <input
+        type="text"
+        id="fuelType"
+        name="fuelType"
+        maxlength="20"
+        placeholder="Fuel Type"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="year">Year</label>
+      <input
+        type="text"
+        id="year"
+        name="year"
+        minlength="4"
+        maxlength="4"
+        min="1980"
+        max="<%= currentYear %>"
+        placeholder="YYYY"
+        pattern="^[0-9]+$"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="mileage">Mileage</label>
+      <input
+        oninput="formatNumberInput(this)"
+        type="text"
+        id="mileage"
+        name="mileage"
+        maxlength="7"
+        placeholder="Mileage"
+        pattern="^[0-9]+$"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="price">Price</label>
+      <input
+        oninput="formatNumberInput(this)"
+        type="text"
+        id="price"
+        name="price"
+        maxlength="7"
+        placeholder="$$$$"
+        pattern="^[0-9]+$"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="carImages">Photos</label>
+      <input
+        type="file"
+        id="carImages"
+        name="carImages"
+        accept="image/png, image/jpeg, image/webp, image/gif"
+        multiple
+        required
+      />
+    </div>
+
+    <button type="submit">List Car</button>
+  </form>
 </main>
 <%- include('../../partials/footer') %>
