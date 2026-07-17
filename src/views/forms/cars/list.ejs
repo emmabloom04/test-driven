@@ -4,7 +4,7 @@
     <% if (carsList && carsList.length > 0) { %>
         <div class="all-cars">
             <% carsList.forEach(car => { %>
-                <a class="car-detail-link" href="#">
+                <a class="car-detail-link" href="/cars/<%= car.id %>">
                     <div class="single-car">
                         <div class="car-info">
                             <h3><%= car.year %> <%= car.make %> <%= car.model %></h3>

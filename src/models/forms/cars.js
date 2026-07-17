@@ -45,4 +45,24 @@ const getAllVehicleImages = async () => {
     return result.rows;
 }
 
-export { createSellACarForm, insertVehicleImage, getAllCars, getAllVehicleImages };
+const getCarById = async (id) => {
+    const query = `
+        SELECT id, vin, sold, make, model, category, exterior_color, interior_color, fuel_type, year, mileage, price, purchased_by, listed_by
+        FROM cars_list
+        WHERE id= $1
+    `;
+    const result = await db.query(query, [id]);
+    return result.rows[0];
+}
+
+const getVehicleImagesByCarId = async (vehicleId) => {
+    const query = `
+        SELECT id, image_url, vehicle_id, alt_text, is_primary
+        FROM vehicle_images
+        WHERE vehicle_id = $1
+    `;
+    const result = await db.query(query, [vehicleId])
+    return result.rows[0];
+}
+
+export { createSellACarForm, insertVehicleImage, getAllCars, getAllVehicleImages, getCarById, getVehicleImagesByCarId };

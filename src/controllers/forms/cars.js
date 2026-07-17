@@ -101,6 +101,10 @@ const showCarsForSale = async (req, res) => {
     });
 };
 
+const carDetailPage = async(req, res, next) => {
+    const carId = Number(req.params.id);
+}
+
 function formatNumberInput(input) {
   // Strip out anything that isn't a digit
   let value = input.value.replace(/\D/g, '');
