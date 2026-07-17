@@ -67,6 +67,15 @@ const getAllCars = async () => {
   return result.rows;
 };
 
+const getAllCategories = async () => {
+    const query = `
+        SELECT id, name
+        FROM categories
+    `;
+    const result = await db.query(query);
+    return result.rows;
+}
+
 const getCarById = async (id) => {
   const query = `
         SELECT id, vin, sold, make, model, category, exterior_color, interior_color, fuel_type, year, mileage, price, purchased_by, listed_by
