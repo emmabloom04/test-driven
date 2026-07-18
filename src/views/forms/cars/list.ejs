@@ -14,7 +14,7 @@
                                 <p class="sold">SOLD</p>
                             <% } %>
                             <p>Exterior: <%= car.exterior_color %> | Interior: <%= car.interior_color %></p>
-                            <p><%= car.fuel_type %> | <%= car.mileage %> mi | $<%= car.price %></p>
+                            <p><%= car.fuel_type %> | <%= Number(car.mileage).toLocaleString('en-US') %> mi | $<%= Number(car.price).toLocaleString('en-US') %></p>
                         </div>
                         <% if (imagesList && imagesList.length > 0) { %>
                             <% imagesList.forEach(image => { %> 

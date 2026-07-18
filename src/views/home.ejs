@@ -1,7 +1,16 @@
 <%- include('partials/header') %>
 <main>
-    <h1><%= title %></h1>
-    <p>Welcome To Test Driven!</p>
-    <a href="/cars/list">Browse Our Cars</a>
+  <div class="about-hero">
+    <img
+      class="about-header"
+      src="images/home-hero-img.jpg"
+      alt="pic of a car in the middle of the road"
+    />
+    <div class="about-overlay">
+      <h1><%= title %></h1>
+      <p>Here at Test Driven, we are committed to getting you the right car for your needs. Feel free to browse our available selection of cars. We hope that you will trust us with your car needs, including the selling of your own used car.</p>
+      <a href="/cars/list">Browse Our Cars</a>
+    </div>
+  </div>
 </main>
 <%- include('partials/footer') %>

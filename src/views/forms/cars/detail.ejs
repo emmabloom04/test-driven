@@ -22,9 +22,20 @@
                 <p class="sold">SOLD</p>
             <% } %>
             <p>Exterior: <%= car.exterior_color %> | Interior: <%= car.interior_color %></p>
-            <p><%= car.fuel_type %> | <%= car.mileage %> mi | $<%= car.price %></p>
+            <p><%= car.fuel_type %> | <%= Number(car.mileage).toLocaleString('en-US') %> mi | $<%= Number(car.price).toLocaleString('en-US') %></p>
             <p><%= car.category %></p>
             <p>VIN: <%= car.vin %></p>
+            <% if (car.listed_by) { %>
+                <p>Listed by: <%= car.seller_name %></p>
+            <% } %>
+            <% if (car.purchased_by) { %>
+                <p>Purchased by: <%= car.purchaser_name %></p>
+            <% } %>
+            <% if (!car.sold) { %>
+                <form method="POST" action="/cars/<%= car.id %>">
+                    <button>Purchase This Car</button>
+                </form>
+            <% } %>
         </div>
     </div>
     <a href="/cars/list">Back to all cars</a>

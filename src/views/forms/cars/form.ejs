@@ -1,6 +1,7 @@
 <%- include('../../partials/header') %>
 <main>
   <h1>Sell A Car</h1>
+  <p>If you are looking to sell your used car, Test Driven is the perfect place to do so! Fill out all of the information here and we'll have your car listed for sale on our site.</p>
   <form
     method="POST"
     action="/cars"
@@ -115,9 +116,10 @@
         type="text"
         id="mileage"
         name="mileage"
-        maxlength="7"
+        maxlength="9"
         placeholder="Mileage"
-        pattern="^[0-9]+$"
+        pattern="^[0-9][0-9,]*$"
+        inputmode="numeric"
         required
       />
     </div>
@@ -129,9 +131,10 @@
         type="text"
         id="price"
         name="price"
-        maxlength="7"
+        maxlength="9"
         placeholder="$$$$"
-        pattern="^[0-9]+$"
+        pattern="^[0-9][0-9,]*$"
+        inputmode="numeric"
         required
       />
     </div>
@@ -151,4 +154,10 @@
     <button type="submit">List Car</button>
   </form>
 </main>
+<script>
+  function formatNumberInput(input) {
+    const digits = input.value.replace(/\D/g, '');
+    input.value = digits ? Number(digits).toLocaleString('en-US') : '';
+  }
+</script>
 <%- include('../../partials/footer') %>

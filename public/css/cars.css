@@ -18,12 +18,6 @@
             transform: translateY(-2px) scale(1.1);
             box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
         }
-        .available {
-            color: rgb(27, 205, 27);
-        }
-        .sold {
-            color: red;
-        }
     }
     img {
         width: 100%;
@@ -77,6 +71,13 @@
   user-select: none;
 }
 
+.available {
+    color: rgb(27, 205, 27);
+}
+.sold {
+    color: red;
+}
+
 /* Position the "next button" to the right */
 .next {
   right: 0;
@@ -87,3 +88,25 @@
 .prev:hover, .next:hover {
   background-color: rgba(0,0,0,0.8);
 }
+
+button {
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--primary-color);
+    color: var(--body-font-color);
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: var(--accent-color);
+    }
+
+    &:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+  }

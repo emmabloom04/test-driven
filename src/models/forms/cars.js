@@ -11,10 +11,11 @@ const createSellACarForm = async (
   year,
   mileage,
   price,
+  listed_by,
 ) => {
   const query = `
-        INSERT INTO cars_list (vin, make, model, category, exterior_color, interior_color, fuel_type, year, mileage, price)
-        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
+        INSERT INTO cars_list (vin, make, model, category, exterior_color, interior_color, fuel_type, year, mileage, price, listed_by)
+        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)
         RETURNING *
     `;
   const result = await db.query(query, [
@@ -28,6 +29,7 @@ const createSellACarForm = async (
     year,
     mileage,
     price,
+    listed_by,
   ]);
   return result.rows[0];
 };
@@ -68,21 +70,52 @@ const getAllCars = async () => {
 };
 
 const getAllCategories = async () => {
-    const query = `
+  const query = `
         SELECT id, name
         FROM categories
     `;
-    const result = await db.query(query);
-    return result.rows;
-}
+  const result = await db.query(query);
+  return result.rows;
+};
 
 const getCarById = async (id) => {
   const query = `
-        SELECT id, vin, sold, make, model, category, exterior_color, interior_color, fuel_type, year, mileage, price, purchased_by, listed_by
-        FROM cars_list
-        WHERE id = $1
-    `;
+    SELECT
+      c.id,
+      c.vin,
+      c.sold,
+      c.make,
+      c.model,
+      c.category,
+      c.exterior_color,
+      c.interior_color,
+      c.fuel_type,
+      c.year,
+      c.mileage,
+      c.price,
+      c.purchased_by,
+      c.listed_by,
+      seller.name AS seller_name,
+      buyer.name AS purchaser_name
+    FROM cars_list c
+    LEFT JOIN users seller ON seller.id = c.listed_by
+    LEFT JOIN users buyer ON buyer.id = c.purchased_by
+    WHERE c.id = $1
+  `;
+
   const result = await db.query(query, [id]);
+  return result.rows[0];
+};
+
+const purchaseCar = async (userId, id) => {
+  const query = `
+    UPDATE cars_list
+    SET sold = TRUE,
+        purchased_by = $1
+    WHERE id = $2 AND sold = FALSE
+    RETURNING *`;
+
+  const result = await db.query(query, [userId, id]);
   return result.rows[0];
 };
 
@@ -113,4 +146,5 @@ export {
   getAllVehicleImages,
   getCarById,
   getVehicleImagesByCarId,
+  purchaseCar
 };
