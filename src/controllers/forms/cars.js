@@ -144,14 +144,7 @@ const carDetailPage = async (req, res, next) => {
     }
 };
 
-function formatNumberInput(input) {
-  // Strip out anything that isn't a digit
-  let value = input.value.replace(/\D/g, '');
-  // Add commas
-  input.value = Number(value).toLocaleString('en-US');
-}
-
-router.get('/', requireLogin, showSellACarForm, formatNumberInput);
+router.get('/', requireLogin, showSellACarForm);
 
 router.get('/list', showCarsForSale);
 router.get('/:id', carDetailPage);
