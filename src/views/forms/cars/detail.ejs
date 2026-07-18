@@ -28,7 +28,14 @@
             <% if (car.listed_by) { %>
                 <p>Listed by: <%= car.seller_name %></p>
             <% } %>
-            <button>Purchase This Car</button>
+            <% if (car.purchased_by) { %>
+                <p>Purchased by: <%= car.purchaser_name %></p>
+            <% } %>
+            <% if (!car.sold) { %>
+                <form method="POST" action="/cars/<%= car.id %>">
+                    <button>Purchase This Car</button>
+                </form>
+            <% } %>
         </div>
     </div>
     <a href="/cars/list">Back to all cars</a>

@@ -1,17 +1,18 @@
-import { Router } from 'express';
-import { requireLogin } from '../../middleware/auth.js';
+import { Router } from "express";
+import { requireLogin } from "../../middleware/auth.js";
 import {
-    createSellACarForm,
-    getAllCars,
-    getAllVehicleImages,
-    getCarById,
-    getAllCategories,
-    getVehicleImagesByCarId,
-    insertVehicleImage
-} from '../../models/forms/cars.js';
-import multer from 'multer';
-import path from 'path';
-import { randomUUID } from 'crypto';
+  createSellACarForm,
+  getAllCars,
+  getAllVehicleImages,
+  getCarById,
+  getAllCategories,
+  getVehicleImagesByCarId,
+  insertVehicleImage,
+  purchaseCar,
+} from "../../models/forms/cars.js";
+import multer from "multer";
+import path from "path";
+import { randomUUID } from "crypto";
 
 const router = Router();
 
@@ -19,20 +20,20 @@ const router = Router();
  * Display the sell a car form page.
  */
 const showSellACarForm = async (req, res) => {
-    let categoriesList = [];
-    try {
-        categoriesList = await getAllCategories();
-    } catch(error) {
-        console.error('Error retrieving categories:', error);
-    }
+  let categoriesList = [];
+  try {
+    categoriesList = await getAllCategories();
+  } catch (error) {
+    console.error("Error retrieving categories:", error);
+  }
 
-    res.render('forms/cars/form', {
-        title: 'Sell A Car',
-        categoriesList
-    });
+  res.render("forms/cars/form", {
+    title: "Sell A Car",
+    categoriesList,
+  });
 };
 
-const uploadsDir = path.join(process.cwd(), 'public', 'uploads');
+const uploadsDir = path.join(process.cwd(), "public", "uploads");
 
 const upload = multer({
   storage: multer.diskStorage({
@@ -40,114 +41,159 @@ const upload = multer({
     filename: (req, file, cb) => {
       const extension = path.extname(file.originalname).toLowerCase();
       cb(null, `${Date.now()}-${randomUUID()}${extension}`);
-    }
+    },
   }),
   limits: {
     files: 8,
-    fileSize: 5 * 1024 * 1024
-  }
+    fileSize: 5 * 1024 * 1024,
+  },
 });
 
 const processSellACarForm = async (req, res) => {
+  // Extract validated data
+  const {
+    vin,
+    make,
+    model,
+    category,
+    exteriorColor,
+    interiorColor,
+    fuelType,
+    year,
+    mileage,
+    price,
+  } = req.body;
+  const user = req.session.user;
+  const userId = user.id;
 
-    // Extract validated data
-    const { vin, make, model, category, exteriorColor, interiorColor, fuelType, year, mileage, price } = req.body;
-    const user = req.session.user;
-    const userId = user.id;
+  const uploadedFiles = req.files || [];
+  if (!uploadedFiles.length) {
+    req.flash("error", "Please upload at least one car photo.");
+    return res.redirect("/cars");
+  }
 
-    const uploadedFiles = req.files || [];
-    if (!uploadedFiles.length) {
-        req.flash('error', 'Please upload at least one car photo.');
-        return res.redirect('/cars');
+  try {
+    const newCar = await createSellACarForm(
+      vin,
+      make,
+      model,
+      category,
+      exteriorColor,
+      interiorColor,
+      fuelType,
+      Number(year),
+      Number(mileage.replace(/,/g, "")),
+      Number(price.replace(/,/g, "")),
+      Number(userId),
+    );
+
+    for (const [index, file] of uploadedFiles.entries()) {
+      await insertVehicleImage(
+        newCar.id,
+        `/uploads/${file.filename}`,
+        `${make} ${model} photo ${index + 1}`,
+        index === 0,
+      );
     }
 
-    try {
-        const newCar = await createSellACarForm(
-            vin,
-            make,
-            model,
-            category,
-            exteriorColor,
-            interiorColor,
-            fuelType,
-            Number(year),
-            Number(mileage.replace(/,/g, '')),
-            Number(price.replace(/,/g, '')),
-            userId
-        );
+    req.flash("success", "Your car listing has been posted successfully.");
+    return res.redirect("/cars/list");
+  } catch (error) {
+    console.error("Error processing car listing:", error);
+    req.flash("error", "There was an error listing the car. Please try again.");
+    return res.redirect("/cars");
+  }
+};
 
-        for (const [index, file] of uploadedFiles.entries()) {
-            await insertVehicleImage(
-                newCar.id,
-                `/uploads/${file.filename}`,
-                `${make} ${model} photo ${index + 1}`,
-                index === 0
-            );
-        }
+const processCarPurchase = async (req, res, next) => {
+  const carId = Number.parseInt(req.params.id, 10);
 
-        req.flash('success', 'Your car listing has been posted successfully.');
-        return res.redirect('/cars/list');
-    } catch (error) {
-        console.error('Error processing car listing:', error);
-        req.flash('error', 'There was an error listing the car. Please try again.');
-        return res.redirect('/cars');
-    }
-}
+  if (Number.isNaN(carId)) {
+    return next(new Error("Invalid car id"));
+  }
+  const user = req.session.user;
+  const userId = Number.parseInt(user.id);
+
+  if (Number.isNaN(userId)) {
+    return next(new Error("Invalid user id"));
+  }
+
+  try {
+    const sellCar = await purchaseCar(userId, carId);
+
+    req.flash("success", "Car purchased successfully!");
+    return res.redirect(`/cars/${carId}`)
+  } catch (error) {
+    console.error("Error processing car purchase", error);
+    req.flash("error", "There was an error purchasing this car.");
+    return res.redirect(`/cars/${carId}`)
+  }
+};
 
 /**
  * Display all cars for sale.
  */
 const showCarsForSale = async (req, res) => {
-    let carsList = [];
-    let imagesList = [];
+  let carsList = [];
+  let imagesList = [];
 
-    try {
-        carsList = await getAllCars();
-    } catch (error) {
-        console.error('Error retrieving cars:', error);
-    }
-    try {
-        imagesList = await getAllVehicleImages();
-    } catch (error) {
-        console.error('Error retrieving vehicle images:', error);
-    }   
+  try {
+    carsList = await getAllCars();
+  } catch (error) {
+    console.error("Error retrieving cars:", error);
+  }
+  try {
+    imagesList = await getAllVehicleImages();
+  } catch (error) {
+    console.error("Error retrieving vehicle images:", error);
+  }
 
-    res.render('forms/cars/list', {
-        title: 'Cars For Sale',
-        carsList,
-        imagesList
-    });
+  res.render("forms/cars/list", {
+    title: "Cars For Sale",
+    carsList,
+    imagesList,
+  });
 };
 
 const carDetailPage = async (req, res, next) => {
-    const carId = Number(req.params.id);
+  const carId = Number.parseInt(req.params.id, 10);
 
-    try {
-        const car = await getCarById(carId);
+  if (Number.isNaN(carId)) {
+    return next(new Error("Invalid car id"));
+  }
 
-        if (!car) {
-            const err = new Error(`Car ${carId} not found`);
-            err.status = 404;
-            return next(err);
-        }
+  try {
+    const car = await getCarById(carId);
 
-        const images = await getVehicleImagesByCarId(carId);
-
-        return res.render('forms/cars/detail', {
-            title: `${car.year} ${car.make} ${car.model}`,
-            car,
-            images
-        });
-    } catch (error) {
-        console.error('Error retrieving car detail:', error);
-        return next(error);
+    if (!car) {
+      const err = new Error(`Car ${carId} not found`);
+      err.status = 404;
+      return next(err);
     }
+
+    const images = await getVehicleImagesByCarId(carId);
+
+    return res.render("forms/cars/detail", {
+      title: `${car.year} ${car.make} ${car.model}`,
+      car,
+      images,
+    });
+  } catch (error) {
+    console.error("Error retrieving car detail:", error);
+    return next(error);
+  }
 };
 
-router.get('/', requireLogin, showSellACarForm);
+router.get("/", requireLogin, showSellACarForm);
 
-router.get('/list', showCarsForSale);
-router.get('/:id', carDetailPage);
-router.post('/', requireLogin, upload.array('carImages', 8), processSellACarForm);
+router.get("/list", showCarsForSale);
+router.get("/:id", carDetailPage);
+router.post(
+  "/",
+  requireLogin,
+  upload.array("carImages", 8),
+  processSellACarForm,
+);
+router.post("/:id", requireLogin, processCarPurchase);
 
 export default router;

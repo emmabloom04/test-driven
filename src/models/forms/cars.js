@@ -11,7 +11,7 @@ const createSellACarForm = async (
   year,
   mileage,
   price,
-  listed_by
+  listed_by,
 ) => {
   const query = `
         INSERT INTO cars_list (vin, make, model, category, exterior_color, interior_color, fuel_type, year, mileage, price, listed_by)
@@ -29,7 +29,7 @@ const createSellACarForm = async (
     year,
     mileage,
     price,
-    listed_by
+    listed_by,
   ]);
   return result.rows[0];
 };
@@ -70,13 +70,13 @@ const getAllCars = async () => {
 };
 
 const getAllCategories = async () => {
-    const query = `
+  const query = `
         SELECT id, name
         FROM categories
     `;
-    const result = await db.query(query);
-    return result.rows;
-}
+  const result = await db.query(query);
+  return result.rows;
+};
 
 const getCarById = async (id) => {
   const query = `
@@ -95,13 +95,27 @@ const getCarById = async (id) => {
       c.price,
       c.purchased_by,
       c.listed_by,
-      u.name AS seller_name
+      seller.name AS seller_name,
+      buyer.name AS purchaser_name
     FROM cars_list c
-    LEFT JOIN users u ON u.id = c.listed_by
+    LEFT JOIN users seller ON seller.id = c.listed_by
+    LEFT JOIN users buyer ON buyer.id = c.purchased_by
     WHERE c.id = $1
   `;
 
   const result = await db.query(query, [id]);
+  return result.rows[0];
+};
+
+const purchaseCar = async (userId, id) => {
+  const query = `
+    UPDATE cars_list
+    SET sold = TRUE,
+        purchased_by = $1
+    WHERE id = $2 AND sold = FALSE
+    RETURNING *`;
+
+  const result = await db.query(query, [userId, id]);
   return result.rows[0];
 };
 
@@ -132,4 +146,5 @@ export {
   getAllVehicleImages,
   getCarById,
   getVehicleImagesByCarId,
+  purchaseCar
 };
