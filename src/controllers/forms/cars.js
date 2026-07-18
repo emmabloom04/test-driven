@@ -52,6 +52,8 @@ const processSellACarForm = async (req, res) => {
 
     // Extract validated data
     const { vin, make, model, category, exteriorColor, interiorColor, fuelType, year, mileage, price } = req.body;
+    const user = req.session.user;
+    const userId = user.id;
 
     const uploadedFiles = req.files || [];
     if (!uploadedFiles.length) {
@@ -71,7 +73,7 @@ const processSellACarForm = async (req, res) => {
             Number(year),
             Number(mileage.replace(/,/g, '')),
             Number(price.replace(/,/g, '')),
-            req.session?.user?.id || null
+            userId
         );
 
         for (const [index, file] of uploadedFiles.entries()) {

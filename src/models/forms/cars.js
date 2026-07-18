@@ -11,10 +11,11 @@ const createSellACarForm = async (
   year,
   mileage,
   price,
+  listed_by
 ) => {
   const query = `
-        INSERT INTO cars_list (vin, make, model, category, exterior_color, interior_color, fuel_type, year, mileage, price)
-        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
+        INSERT INTO cars_list (vin, make, model, category, exterior_color, interior_color, fuel_type, year, mileage, price, listed_by)
+        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)
         RETURNING *
     `;
   const result = await db.query(query, [
@@ -28,6 +29,7 @@ const createSellACarForm = async (
     year,
     mileage,
     price,
+    listed_by
   ]);
   return result.rows[0];
 };
